@@ -1,8 +1,13 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const app = express();
+const path = require('path');
 
 app.get('/', (req, res) => res.json({ msg: 'Hello World' }))
+app.get('/admin', (req,res) => {
+    console.log('admin page start');
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'))
+});
 
 //connect Db
 connectDB();
@@ -16,6 +21,7 @@ app.use(express.json({ extended: false }));
 app.use('/api/users', require('./routes/user'));
 app.use('/api/contact', require('./routes/contact'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/admin', require('./routes/admin'));
 
 
 const PORT = process.env.PORT || 5000;
