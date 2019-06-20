@@ -61,6 +61,8 @@ router.post('/', [
             if (err) throw err;
             res.json({ token })
         });
+        // add a put request to update the last login from user
+
 
     } catch (error) {
         console.error(err.message);
