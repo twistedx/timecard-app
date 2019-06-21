@@ -10,14 +10,29 @@
 <body>
     <h1>ADMIN PAGE</h1>
     <hr>
+
     <h2>GET ROUTES</h2>
-    <h3>View Profile</h3>
+
+    <div>
+        <h3>View Profile</h3>
+        <div id = 'viewProfile'><button type = 'button' onclick = 'viewProfile()'>view profile</button></div>
+    </div>
+
+    
+
     <h3>View Jobs</h3>
     <h3>View Timecards</h3>
     <h3>Card Reveal Job Info</h3>
     <h3>Card Reveal Timecard Info</h3>
     <hr>
     <h2>POST ROUTES</h2>
+
+    <div>
+        <h3>LOGIN</h3>
+        <div id = 'login'>
+            <input id = 'log' onclick = 'login()' type="button" value='{ "email": "jdoe@gmail.com", "password": "123456"}'>
+        </div>
+    </div>
     <h3>New User</h3>
     <form action="POST">
         <input type="text" name= 'username' placeholder="Username">
@@ -49,7 +64,7 @@
     <h3>Edit Profile</h3>
     <h3>Edit Job</h3>
     <h3>Edit Timecard</h3>
-    <h3>LOGIN</h3>
+
     <h3>LOGOUT</h3>
     
 
