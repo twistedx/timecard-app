@@ -10,22 +10,55 @@
 <body>
     <h1>ADMIN PAGE</h1>
     <hr>
+
     <h2>GET ROUTES</h2>
-    <h3>View Profile</h3>
+
+    <div>
+        <h3>View Profile</h3>
+        <div id = 'viewProfile'><button onclick = 'viewProfile()'>view profile</button></div>
+    </div>
+
+    
+
     <h3>View Jobs</h3>
     <h3>View Timecards</h3>
     <h3>Card Reveal Job Info</h3>
     <h3>Card Reveal Timecard Info</h3>
     <hr>
     <h2>POST ROUTES</h2>
+
+    <div>
+        <h3>LOGIN</h3>
+        <div id = 'login'>
+            <input id = 'log' onclick = 'login()' type="button" value='{ "email": "jdoe@gmail.com", "password": "123456"}'>
+        </div>
+    </div>
     <h3>New User</h3>
-    <form action="POST">
-        <input type="text" name= 'username' placeholder="Username">
+    <form action="/api/user" method = 'POST'>
+        <input type="text" name= 'name' placeholder="name">
+        <input type="text" name= 'email' placeholder="email">
         <input type="text" name="password" placeholder="Password">
         <input type="submit" value = "create">
     </form>
 
-    <h3>New Job Creation</h3>
+    <div>
+        <h3>New Job Creation</h3>
+        <form id = 'newJobForm'>
+            <input id = 'njfName' type="text" name= 'name' placeholder="job name">
+            <input type="text" name= 'role' placeholder="role">
+            <div>
+                <input class = 'njfJobType' id = 'salary' type="radio" name="jobType" value = "salary">
+                <label for="salary">Salary</label>
+                <input class = 'njfJobType' id = 'hourly' type="radio" name="jobType" value = "hourly">
+                <label for="hourly">Hourly</label>
+                <input class = 'njfJobType' id = 'completion' type="radio" name="jobType" value = "completion">
+                <label for="completion">Completion</label>
+            </div>
+            <input id = 'njfDes' type="text" name= 'description' placeholder = 'description'>
+            <input type="submit" value = "create" onclick="newJob()">
+        </form>
+    </div>
+    
     <h3>New Timecard Creation</h3>
     <h3>Create Profile</h3>
     <hr>
@@ -49,7 +82,7 @@
     <h3>Edit Profile</h3>
     <h3>Edit Job</h3>
     <h3>Edit Timecard</h3>
-    <h3>LOGIN</h3>
+
     <h3>LOGOUT</h3>
     
 

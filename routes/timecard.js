@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
-const User = require('../models/User');
 const Timecard = require('../models/Timecard');
 
 const auth = require('../middleware/auth');
@@ -14,7 +13,7 @@ router.get('/', auth, async (req, res) => {
     try {
         const timecard = await Timecard.find({ user: req.user.id }).sort({ date: -1 });
         res.json(timecard);
-    } catch (error) {
+    } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')
     }
