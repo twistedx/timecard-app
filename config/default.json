@@ -1,5 +1,5 @@
 {
   "MONGODB_URI": "mongodb+srv://sean123:timecardkeeper@timecard-app-l2kkm.mongodb.net/test?retryWrites=true&w=majority",
   "jwtSecret": "mississippi River",
-  "MONGO_LOCAL": "mongodb://localhost/contactdb"
+  "MONGO_LOCAL": "mongodb://localhost/timecardDb"
 }

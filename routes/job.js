@@ -14,7 +14,7 @@ router.get('/', auth, async (req, res) => {
     try {
         const jobs = await Job.find({ user: req.user.id }).sort({ date: -1 });
         res.json(jobs);
-    } catch (error) {
+    } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')
     }
@@ -40,7 +40,7 @@ router.post('/', [auth, [
         const job = await newJob.save();
         res.json(job);
 
-    } catch (error) {
+    } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')
     }
@@ -73,7 +73,7 @@ router.put('/:id', auth, async (req, res) => {
             { $set: jobFields },
             { new: true });
 
-    } catch (error) {
+    } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')
     }
@@ -98,7 +98,7 @@ router.delete('/:id', auth, async (req, res) => {
 
         res.json({ msg: 'Job Removed' });
 
-    } catch (error) {
+    } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')
     }
