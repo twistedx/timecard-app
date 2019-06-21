@@ -17,11 +17,14 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
 
+//admin public folder
+app.use(express.static('public'));
+
 //define the routes
-app.use('/api/users', require('./routes/user'));
+app.use('/api/user', require('./routes/user'));
 app.use('/api/job', require('./routes/job'));
 app.use('/api/auth', require('./routes/auth'));
-app.use('/admin', require('./routes/admin'));
+app.use('/api/timecard', require('./routes/timecard'));
 
 
 const PORT = process.env.PORT || 5000;
