@@ -21,7 +21,9 @@
             return r.json();
         })
         .then(r => {
-            console.log(r)
+            console.log(r);
+            sessionStorage.setItem('token', r.token);
+            console.log(`this is the call of seession storage: ${sessionStorage.getItem('token')}`);
         })
         .catch(e => console.error('ERROR: ', e));
     }
@@ -29,13 +31,48 @@
 
 
     //view profile
-    viewProfile = () => {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = () => {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("viewProfile").innerHTML =
-                this.responseText;
-              }};
-        xhttp.open("GET", "/api/user", true);
-        xhttp.send();
+    viewProfile = () => { //put the user id in the fetch url
+        fetch('/api/user/5d0c237c9923b70a70571f7e', {
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer' + sessionStorage.getItem('token')
+            }
+        }).then(r => r.text())
+        .then(r => {
+            console.log(r);
+        })
+        .catch(e => console.error('ERROR: ', e));
+    }
+
+
+
+    //create new job
+    newJob = () => {
+        // return alert({
+        //     name: document.getElementById('njfName').value,
+        //     jobType: document.getElementsByClassName('njfJobType').value,
+        //     role: document.getElementById('njfRole').value,
+        //     description: document.getElementById('njfDes').value
+        // });
+        
+        // alert(newJobObj);
+
+        // fetch('/api/auth', {
+        //     method: 'POST',
+        //     body: logval,
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        // .then(r => {
+        //     console.log(r);
+        //     return r.json();
+        // })
+        // .then(r => {
+        //     console.log(r);
+        //     sessionStorage.setItem('token', r.token);
+        //     console.log(`this is the call of seession storage: ${sessionStorage.getItem('token')}`);
+        // })
+        // .catch(e => console.error('ERROR: ', e));
     }

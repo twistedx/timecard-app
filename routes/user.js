@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator/check');
+const auth = require('../middleware/auth');
 
 
 //@route        POST api/users
@@ -52,6 +53,21 @@ router.post('/', [
     } catch (error) {
         console.error(err.message);
         res.status(500).send('Server Error');
+    }
+})
+
+
+//@route        GET api/users
+//@description  View User Profile
+//@access       PRIVATE
+router.get('/:id', auth, async (req, res) => {
+    console.log(`REQ.HEADERS.AUTHORIZATION: ${req.headers['authorization']}`);
+    try {
+        const profile = await User.find({ _id: req.user.id }).sort({ date: -1 });
+        res.json(profile);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error')
     }
 })
 
