@@ -2,8 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
-
-import Login from './components/Login/Login.js';
+import LoginPage from './components/LoginPage/LoginPage.js';
 
 const App = () => {
   
@@ -14,7 +13,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <Login />
+      <LoginPage />
     </Fragment>
   );
 }
