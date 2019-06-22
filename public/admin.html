@@ -19,9 +19,17 @@
     </div>
 
     
-
-    <h3>View Jobs</h3>
-    <h3>View Timecards</h3>
+    <div>
+        <h3>View Jobs</h3>
+        <div id = 'viewJob'><button onclick = 'viewJob()'>view job</button></div>
+    </div>
+    
+    <div>
+        <h3>View Timecards</h3>
+        <input id = 'vntc' type="text" placeholder="put a job id in here">
+        <div id = 'viewTc'><button onclick = 'viewTc()'>view timecard</button></div>
+    </div>
+    
     <h3>Card Reveal Job Info</h3>
     <h3>Card Reveal Timecard Info</h3>
     <hr>
@@ -41,26 +49,25 @@
         <input type="submit" value = "create">
     </form>
 
+
     <div>
         <h3>New Job Creation</h3>
         <form id = 'newJobForm'>
-            <input id = 'njfName' type="text" name= 'name' placeholder="job name">
+            <input type="text" name= 'name' placeholder="job name">
             <input type="text" name= 'role' placeholder="role">
-            <div>
-                <input class = 'njfJobType' id = 'salary' type="radio" name="jobType" value = "salary">
-                <label for="salary">Salary</label>
-                <input class = 'njfJobType' id = 'hourly' type="radio" name="jobType" value = "hourly">
-                <label for="hourly">Hourly</label>
-                <input class = 'njfJobType' id = 'completion' type="radio" name="jobType" value = "completion">
-                <label for="completion">Completion</label>
-            </div>
-            <input id = 'njfDes' type="text" name= 'description' placeholder = 'description'>
-            <input type="submit" value = "create" onclick="newJob()">
+            <input type="text" name = 'jobType' placeholder = 'Hourly, Salary, Completion'>
+            <input type="text" name= 'description' placeholder = 'description'>
+            <input type = 'button' value = "create" onclick="newJob()">
         </form>
     </div>
+
+
+    <div>
+        <h3>New Timecard Creation</h3>
+        <input id = 'ntc' type="text" placeholder="put a job id in here">
+        <input type = 'button' value = "Clock In" onclick="newTc()" >
+    </div>
     
-    <h3>New Timecard Creation</h3>
-    <h3>Create Profile</h3>
     <hr>
     <h2>UPDATE ROUTES</h2>
     <h3>Clocking Timecard</h3>
