@@ -9,9 +9,9 @@ const auth = require('../middleware/auth');
 //@description  GET all users timecard
 //@access       PRIVATE 
 
-router.get('/', auth, async (req, res) => {
+router.get('/:job', auth, async (req, res) => {
     try {
-        const timecard = await Timecard.find({ user: req.user.id }).sort({ date: -1 });
+        const timecard = await Timecard.find({ job: req.params.job }).sort({ date: -1 });
         res.json(timecard);
     } catch (err) {
         console.error(err.message);

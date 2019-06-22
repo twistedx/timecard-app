@@ -11,8 +11,11 @@ const auth = require('../middleware/auth');
 //@access       PRIVATE 
 
 router.get('/', auth, async (req, res) => {
+    const id = req.user.id;
+    console.log(`this is the user id from req.user.id:
+    ${id}`);
     try {
-        const jobs = await Job.find({ user: req.user.id }).sort({ date: -1 });
+        const jobs = await Job.find({ user: id }).sort({ date: -1 });
         res.json(jobs);
     } catch (err) {
         console.error(err.message);
