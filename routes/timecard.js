@@ -19,6 +19,28 @@ router.get('/:job', auth, async (req, res) => {
     }
 })
 
+
+
+//@route        GET api/timecard/jid/tcid
+//@description  GET one timecard from a job
+//@access       PRIVATE 
+
+router.get('/:jid/:tcid', auth, async (req, res) => {
+    console.log(`
+    this is the Job Id: ${req.params.jid}
+    this is the Timecard Id: ${req.params.tcid}`);
+
+    try {
+        const timecard = await Timecard.find({ job: req.params.jid, _id: req.params.tcid });
+        res.json(timecard);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error')
+    }
+})
+
+
+
 //@route        POST api/timecard
 //@description  Add new Timecard
 //@access       Private

@@ -30,8 +30,20 @@
         <div id = 'viewTc'><button onclick = 'viewTc()'>view timecard</button></div>
     </div>
     
-    <h3>Card Reveal Job Info</h3>
-    <h3>Card Reveal Timecard Info</h3>
+    <div>
+        <h3>Card Reveal Job Info</h3>
+        <input id = 'jobCrInput' type="text" name = 'jobId' placeholder="input Job Id">
+        <div id = 'jobCr'><button onclick = 'jobCR()'>card reveal job info</button></div>
+    </div>
+    
+    <div>
+        <h3>Card Reveal Timecard Info</h3>
+        <input id = 'tcCrInput' type="text" name = 'tcId' placeholder="input timecard Id">
+        <input id = 'tcJobCrInput' type="text" name = 'tcJobId' placeholder="input Job Id">
+        <div id = 'tcCr'><button onclick = 'tcCR()'>card reveal timecard info</button></div>
+    </div>
+
+
     <hr>
     <h2>POST ROUTES</h2>
 

@@ -209,3 +209,94 @@
 
 
 
+
+
+        //Card Reveal view job=====================================================================================================
+        jobCR = () => { 
+            let jobId = document.getElementById('jobCrInput').value;
+
+
+            console.log(`
+            this is the front end storage of your token: 
+            ${token}`);
+    
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+            headers['x-auth-token'] = token;
+    
+            fetch(`/api/job/${jobId}`, {
+                method: 'GET',
+                headers
+            }).then(r => r.json()).then(r => {
+                console.log(`
+                this is the r object return in jobcr():
+                ${JSON.stringify(r)}`)
+                const rObj = {
+                    'name' : r[0].name,
+                    'role' : r[0].role,
+                    'type' : r[0].jobType,
+                    'des' : r[0].description
+                }
+                console.log(`
+                this the rObj built by me:
+                ${JSON.stringify(rObj)}`);
+
+
+                //print to html
+                document.getElementById('jobCr').innerHTML = `
+                <div>Job Name: ${rObj.name} </div>
+                <div>Job Role: ${rObj.role} </div>
+                <div>Job Type: ${rObj.type} </div>
+                <div>Job Description: ${rObj.des} </div>
+                `;
+            }).catch(e => console.error('ERROR: ', e));
+        }
+
+
+
+
+
+        //Card Reveal view timecard=====================================================================================================
+        tcCR = () => { 
+            const jobId = document.getElementById('tcJobCrInput').value;
+            const tcId = document.getElementById('tcCrInput') .value;
+
+            console.log(`
+            this is the front end storage of your token: 
+            ${token}`);
+    
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+            headers['x-auth-token'] = token;
+    
+            fetch(`/api/timecard/${jobId}/${tcId}`, {//&${tcId}
+                method: 'GET',
+                headers
+            }).then(r => r.json()).then(r => {
+                console.log(`
+                this is the r object return in tcCr():
+                ${JSON.stringify(r)}`)
+                const rObj = {
+                    'cin' : r[0].clockIn,
+                    'cout' : r[0].clockOut,
+                    'lin' : r[0].lunchIn,
+                    'lout' : r[0].lunchOut
+                }
+                console.log(`
+                this the rObj built by me:
+                ${JSON.stringify(rObj)}`);
+
+
+                //print to html
+                document.getElementById('tcCr').innerHTML = `
+                <div>Clock In: ${rObj.cin} </div>
+                <div>Lunch In: ${rObj.lin} </div>
+                <div>Lunch Out: ${rObj.lout} </div>
+                <div>Clock Out: ${rObj.cout} </div>
+                `;
+            }).catch(e => console.error('ERROR: ', e));
+        }
