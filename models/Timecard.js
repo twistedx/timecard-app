@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const TimecardSchema = mongoose.Schema({
 
     job: {
-        type: String
+        type: Date
     },
     date: {
         type: Date,
@@ -14,7 +14,7 @@ const TimecardSchema = mongoose.Schema({
         default: Date.now
     },
     clockOut: {
-        type: Date,
+        type: Date
     },
     breakIn: {
         type: Date

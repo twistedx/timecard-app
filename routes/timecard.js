@@ -45,10 +45,11 @@ router.get('/:jid/:tcid', auth, async (req, res) => {
 //@description  Add new Timecard
 //@access       Private
 
-router.post('/:job', auth, async (req, res) => {
+router.post('/:job/', auth, async (req, res) => {
     console.log("timecard active");
     const { date, clockIn } = req.body; //job comes from frontend -- needs to be implimented
     const job = req.params.job;
+  
     try {
         const newTimecard = new Timecard({
             job, date, clockIn
@@ -63,16 +64,28 @@ router.post('/:job', auth, async (req, res) => {
     }
 })
 
-//@route        PUT api/timecard/:id
+//@route        PUT api/timecard/:jid/:tcid
 //@description  Update Timecard
 //@access       Private
 
-router.put('/:id', auth, async (req, res) => {
-    const { clockOut, lunchIn, lunchOut, breakIn, breakOut } = req.body;
-    const id = { _id: req.params.id} ;
+router.put('/:jid/:tcid', auth, async (req, res) => {
+    const { clockIn, clockOut, lunchIn, lunchOut, breakIn, breakOut } = req.body;
+    const tcid = req.params.tcid;
+    const jid = req.params.jid;
+    const id = req.user.id;
+
+    console.log(`
+    this is the info from req params:
+    tcid = ${tcid}
+    jid = ${jid}
+    id = ${id}`);
+    
+
+
     //build a Timecard object
 
     const TimecardFields = {};
+    if (clockIn) TimecardFields.clockIn = clockIn;
     if (clockOut) TimecardFields.clockOut = clockOut;
     if (lunchIn) TimecardFields.lunchIn = lunchIn;
     if (lunchOut) TimecardFields.lunchOut = lunchOut;
@@ -80,15 +93,13 @@ router.put('/:id', auth, async (req, res) => {
     if (breakOut) TimecardFields.breakOut = breakOut;
 
     try {
-        let tc = await Timecard.findById(id);
+        let tc = await Timecard.findById({_id: tcid});
 
-        console.log(tc);
+        console.log(`the return from timecard.findbyid(id) ${tc}`);
 
         if (!tc) return res.status(404).json({ msg: 'Timecard not found' });
 
-        let newtc = await Timecard.findOneAndUpdate(id,
-            { $set: TimecardFields },
-            { new: true });
+        let newtc = await Timecard.findOneAndUpdate({ job: jid, _id: tcid }, TimecardFields, { new: true });
             res.json(newtc);
     } catch (err) {
         console.error(err.message);
