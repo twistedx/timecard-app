@@ -13,3 +13,17 @@
 #CreateAccount:hover {
     text-decoration: underline;
 }
+.container {
+    width: 80vh;
+}
+form {
+    line-height: 4;
+    margin-top: 30px;
+    display: grid;
+    justify-items: center;
+    width: 80vh;
+}
+.row{
+    display: grid;
+    justify-content: center;
+}
