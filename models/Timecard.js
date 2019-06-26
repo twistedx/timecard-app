@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const TimecardSchema = mongoose.Schema({
 
     job: {
-        type: Date
+        type: String
     },
     date: {
         type: Date,

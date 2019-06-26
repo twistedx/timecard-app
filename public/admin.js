@@ -260,7 +260,7 @@
 
         //Card Reveal view timecard=====================================================================================================
         tcCR = () => { 
-            const jobId = document.getElementById('tcJobCrInput').value;
+            // const jobId = document.getElementById('tcJobCrInput').value;
             const tcId = document.getElementById('tcCrInput') .value;
 
             console.log(`
@@ -273,7 +273,7 @@
             }
             headers['x-auth-token'] = token;
     
-            fetch(`/api/timecard/${jobId}/${tcId}`, {//&${tcId}
+            fetch(`/api/timecard/${tcId}`, {
                 method: 'GET',
                 headers
             }).then(r => r.json()).then(r => {
@@ -405,7 +405,7 @@
     clockingTc = (btn) => {
         const jid = document.getElementById('ctTCJid').value;
         const tcid = document.getElementById('ctTCTcid').value;
-        const d = Date();
+        const d = new Date().toUTCString();
 
         console.log(`
         

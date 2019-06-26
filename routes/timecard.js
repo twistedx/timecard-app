@@ -25,13 +25,13 @@ router.get('/:job', auth, async (req, res) => {
 //@description  GET one timecard from a job
 //@access       PRIVATE 
 
-router.get('/:jid/:tcid', auth, async (req, res) => {
+router.get('/:tcid', auth, async (req, res) => {
     console.log(`
     this is the Job Id: ${req.params.jid}
     this is the Timecard Id: ${req.params.tcid}`);
 
     try {
-        const timecard = await Timecard.find({ job: req.params.jid, _id: req.params.tcid });
+        const timecard = await Timecard.find({ _id: req.params.tcid });
         res.json(timecard);
     } catch (err) {
         console.error(err.message);
@@ -45,7 +45,7 @@ router.get('/:jid/:tcid', auth, async (req, res) => {
 //@description  Add new Timecard
 //@access       Private
 
-router.post('/:job/', auth, async (req, res) => {
+router.post('/:job', auth, async (req, res) => {
     console.log("timecard active");
     const { date, clockIn } = req.body; //job comes from frontend -- needs to be implimented
     const job = req.params.job;
