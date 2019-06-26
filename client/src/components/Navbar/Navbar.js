@@ -6,7 +6,7 @@ const Navbar = (props) => {
         <div>
             <nav>
                 <div className="nav-wrapper blue lighten-1">
-                    <a href="#!" className="brand-logo center">Timecard App</a>
+                    <a href="#!" className="brand-logo center">{props.title}</a>
                 </div>
             </nav>
         </div>
