@@ -1,9 +1,21 @@
-body {
-    display: flex;
-    min-height: 75.75vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
+header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: -10;
+}
+main {
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 120px;
+}
