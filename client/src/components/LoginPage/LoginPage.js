@@ -10,7 +10,7 @@ const LoginPage = () => {
         [
             <div>
                 <header>
-                    <Navbar />
+                    <Navbar title="Timecard App" />
                 </header>
                 <main>
                     <body>
