@@ -1,0 +1,15 @@
+#ForgotPassword {
+    margin: 10px;
+}
+
+#CreateAccount {
+    margin: 10px;
+}
+
+#ForgotPassword:hover {
+    text-decoration: underline;
+}
+
+#CreateAccount:hover {
+    text-decoration: underline;
+}
