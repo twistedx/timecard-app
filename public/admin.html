@@ -30,8 +30,19 @@
         <div id = 'viewTc'><button onclick = 'viewTc()'>view timecard</button></div>
     </div>
     
-    <h3>Card Reveal Job Info</h3>
-    <h3>Card Reveal Timecard Info</h3>
+    <div>
+        <h3>Card Reveal Job Info</h3>
+        <input id = 'jobCrInput' type="text" name = 'jobId' placeholder="input Job Id">
+        <div id = 'jobCr'><button onclick = 'jobCR()'>card reveal job info</button></div>
+    </div>
+    
+    <div>
+        <h3>Card Reveal Timecard Info</h3>
+        <input id = 'tcCrInput' type="text" name = 'tcId' placeholder="input timecard Id">
+        <div id = 'tcCr'><button onclick = 'tcCR()'>card reveal timecard info</button></div>
+    </div>
+
+
     <hr>
     <h2>POST ROUTES</h2>
 
@@ -70,27 +81,66 @@
     
     <hr>
     <h2>UPDATE ROUTES</h2>
-    <h3>Clocking Timecard</h3>
-    <div>
-        <span>clock in</span>
-        <span>clock out</span>
-        <span>lunch in</span>
-        <span>lunch out</span>
-        <div>
-            <span>New Break</span>
-            <span>break in</span>
-            <span>break out</span>
-        </div>
-        
-        
 
+    <div>
+        <h3>Clocking Timecard</h3>
+        <input type="text" name="jobId" id="ctTCJid" placeholder="Job Id #">
+        <input type="text" name="tcId" id="ctTCTcid" placeholder="Timecard Id #">
+        <div>
+            <input type="button" name = 'clockOut' value = 'Clock Out' onclick="clockingTc('cout')">
+            <input type="button" name = 'lunchIn' value="Lunch In" onclick="clockingTc('lin')">
+            <input type="button" name = 'lunchOut' value="Lunch Out" onclick="clockingTc('lout')">
+            <input type="button" name = 'breakIn' value="Break In" onclick="clockingTc('bin')">
+            <input type="button" name = 'breakOut' value="Break Out" onclick="clockingTc('bout')">
+        </div>
     </div>
 
-    <h3>Edit Profile</h3>
-    <h3>Edit Job</h3>
-    <h3>Edit Timecard</h3>
+    <div>
+        <h3>Edit Profile</h3>
+        <form id = 'upProForm'>
+            <input type="text" name = 'name' id = 'epName' placeholder="Name to Update">
+            <input type="email" name = 'email' id = 'epEmail' placeholder = 'Email to Update'>
+            <input type="text" name = 'password' id="epPass" placeholder="Password to Update">
+            <input type = 'button' onclick="editProfile()" value="update profile">
+        </form>
+    </div>
 
-    <h3>LOGOUT</h3>
+
+
+    <div>
+        <h3>Edit Job</h3>
+        <input type="text" name="jobId" id="ejJid" placeholder="Job Id #">
+        <form id = 'upJobForm'>
+            <input type="text" name = 'name' placeholder="Job Name to Update">
+            <input type="text" name = 'role' placeholder = 'Job Role to Update'>
+            <input type="text" name = 'jobType' placeholder="Job Type to Update">
+            <input type="text" name = 'description' placeholder="Job Description to Update">
+            <input type = 'button' onclick="editJob()" value="update Job">
+        </form>
+    </div>
+
+
+    <div>
+        <h3>Edit Timecard</h3>
+        <input type="text" name="jobId" id="eTCJid" placeholder="Job Id #">
+        <input type="text" name="tcId" id="eTCTcid" placeholder="Timecard Id #">
+        <form id = 'upTcForm'>
+            <input type="text" name = 'clockIn' placeholder="Clock In to Update">
+            <input type="text" name = 'clockOut' placeholder = 'Clock Out to Update'>
+            <input type="text" name = 'lunchIn' placeholder="Lunch In to Update">
+            <input type="text" name = 'lunchOut' placeholder="Lunch Out to Update">
+            <input type="text" name = 'breakIn' placeholder="Break In to Update">
+            <input type="text" name = 'breakOut' placeholder="Break Out to Update">
+            <input type = 'button' onclick="editTc()" value="update Timecard">
+        </form>
+    </div>
+
+    <hr>
+
+    <div>
+        <input type="button" onclick="logout()" value = 'LOGOUT'>
+    </div>
+  
     
 
 

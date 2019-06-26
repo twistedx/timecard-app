@@ -56,7 +56,7 @@
         }
         headers['x-auth-token'] = token;
 
-        fetch('/api/user/5d0c237c9923b70a70571f7e', {             //!!!!!!!!put the user id in the fetch url!!!!!!!!!!!!!!!!!!!
+        fetch('/api/user/', {             //!!!!!!!!put the user id in the fetch url!!!!!!!!!!!!!!!!!!!
             method: 'GET',
             headers
         }).then(r => r.json())
@@ -209,3 +209,244 @@
 
 
 
+
+
+        //Card Reveal view job=====================================================================================================
+        jobCR = () => { 
+            let jobId = document.getElementById('jobCrInput').value;
+
+
+            console.log(`
+            this is the front end storage of your token: 
+            ${token}`);
+    
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+            headers['x-auth-token'] = token;
+    
+            fetch(`/api/job/${jobId}`, {
+                method: 'GET',
+                headers
+            }).then(r => r.json()).then(r => {
+                console.log(`
+                this is the r object return in jobcr():
+                ${JSON.stringify(r)}`)
+                const rObj = {
+                    'name' : r[0].name,
+                    'role' : r[0].role,
+                    'type' : r[0].jobType,
+                    'des' : r[0].description
+                }
+                console.log(`
+                this the rObj built by me:
+                ${JSON.stringify(rObj)}`);
+
+
+                //print to html
+                document.getElementById('jobCr').innerHTML = `
+                <div>Job Name: ${rObj.name} </div>
+                <div>Job Role: ${rObj.role} </div>
+                <div>Job Type: ${rObj.type} </div>
+                <div>Job Description: ${rObj.des} </div>
+                `;
+            }).catch(e => console.error('ERROR: ', e));
+        }
+
+
+
+
+
+        //Card Reveal view timecard=====================================================================================================
+        tcCR = () => { 
+            // const jobId = document.getElementById('tcJobCrInput').value;
+            const tcId = document.getElementById('tcCrInput') .value;
+
+            console.log(`
+            this is the front end storage of your token: 
+            ${token}`);
+    
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+            headers['x-auth-token'] = token;
+    
+            fetch(`/api/timecard/${tcId}`, {
+                method: 'GET',
+                headers
+            }).then(r => r.json()).then(r => {
+                console.log(`
+                this is the r object return in tcCr():
+                ${JSON.stringify(r)}`)
+                const rObj = {
+                    'cin' : r[0].clockIn,
+                    'cout' : r[0].clockOut,
+                    'lin' : r[0].lunchIn,
+                    'lout' : r[0].lunchOut
+                }
+                console.log(`
+                this the rObj built by me:
+                ${JSON.stringify(rObj)}`);
+
+
+                //print to html
+                document.getElementById('tcCr').innerHTML = `
+                <div>Clock In: ${rObj.cin} </div>
+                <div>Lunch In: ${rObj.lin} </div>
+                <div>Lunch Out: ${rObj.lout} </div>
+                <div>Clock Out: ${rObj.cout} </div>
+                `;
+            }).catch(e => console.error('ERROR: ', e));
+        }
+
+
+
+
+    //Edit profile======================================================================================
+    editProfile = () => { 
+        //formmatting form responses into payload obj
+        let f = document.getElementById('upProForm').elements;
+        console.log(`this is the form in editProfile():
+        ${f.length}`);
+        let upfObj = {};
+        for(let i = 0;i<f.length-1; i++){
+            if(f[i].value !== 'create'){
+                upfObj[f[i].name] = f[i].value;
+            }        
+        }
+        const newObj = JSON.stringify(upfObj);
+        console.log(newObj);
+
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+        headers['x-auth-token'] = token;
+
+        fetch('/api/user/', {
+            method: 'PUT',
+            body: newObj,
+            headers
+        }).then(r => r.json())
+        .then(r => {
+            let res = JSON.stringify(r[0]);
+            console.log(`this is the second then after editProfiile() fetch 
+            ${res}`);
+        })
+        .catch(e => console.error('ERROR: ', e));
+    }
+
+
+
+
+    //Edit Job======================================================================================
+    editTc = (date,name,njid,ntcid) => { 
+        let jid;
+        let tcid;
+        // let d = ISODate(date);
+        //formmatting form responses into payload obj
+
+
+        let newObj;
+        if(date){
+            jid = njid;
+            tcid = ntcid;
+            let Obj = { [name]: date };
+            newObj = JSON.stringify(Obj);
+
+            console.log(`this is the form in clocking Timecard:
+            ${newObj}`);
+            
+        }else {
+            jid = document.getElementById('eTCJid').value;
+            tcid = document.getElementById('eTCTcid').value;
+            let f = document.getElementById('upTcForm').elements;
+            
+            console.log(`this is the form in editTc():
+            ${f.length}`);
+            let utcObj = {};
+            for(let i = 0;i<f.length-1; i++){
+                if(f[i].value !== 'create'){
+                    utcObj[f[i].name] = f[i].value;
+                }        
+            }
+            newObj = JSON.stringify(utcObj);
+            console.log(newObj);
+        }
+
+  
+
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+        headers['x-auth-token'] = token;
+
+        fetch(`/api/timecard/${jid}/${tcid}`, {
+            method: 'PUT',
+            body: newObj,
+            headers
+        }).then(r => r.json())
+        .then(r => {
+            let res = JSON.stringify(r[0]);
+            console.log(`this is the second then after editTc() fetch 
+            ${res}`);
+        })
+        .catch(e => console.error('ERROR: ', e));
+    }
+
+
+
+
+// CLOCKING TIMECARD FUNCTIONS ==============================================================================
+
+    clockingTc = (btn) => {
+        const jid = document.getElementById('ctTCJid').value;
+        const tcid = document.getElementById('ctTCTcid').value;
+        const d = new Date().toUTCString();
+
+        console.log(`
+        
+        this is the date right now :
+        ${d}
+        
+        
+        `)
+
+        switch (btn) {
+            case 'cout':
+                editTc(d,'clockOut',jid,tcid);
+                break;
+        
+            case 'lin':
+                    editTc(d,'lunchIn',jid,tcid);
+                break;
+            
+            case 'lout':
+                    editTc(d,'lunchOut',jid,tcid);
+                break;
+                
+            case 'bin':
+                    editTc(d,'breakIn',jid,tcid);
+                break;
+
+            case 'bout':
+                    editTc(d,'breakOut',jid,tcid);
+                break;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //Logout =====================================================================================
+    logout = () => token = '';

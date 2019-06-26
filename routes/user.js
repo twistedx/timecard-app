@@ -60,8 +60,7 @@ router.post('/', [
 //@route        GET api/users
 //@description  View User Profile
 //@access       PRIVATE
-router.get('/:id', auth, async (req, res) => {
-    console.log(`REQ.HEADERS.AUTHORIZATION: ${req.headers['authorization']}`);
+router.get('/', auth, async (req, res) => {
     try {
         const profile = await User.find({ _id: req.user.id }).sort({ date: -1 });
         res.json(profile);
@@ -69,6 +68,52 @@ router.get('/:id', auth, async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server Error')
     }
+})
+
+
+
+//@route        PUT api/user/:id
+//@description  Update Profile
+//@access       Private
+
+router.put('/', auth, async (req, res) => {
+    const { name, email, password } = req.body;
+    const uid = req.user.id;
+
+    console.log(`
+    user put body: 
+    name: ${name}
+    email: ${email}
+    password: ${password}
+    userId: ${uid}`);
+
+    //build a job object
+
+    const proFields = {};
+    if (name) proFields.name = name;
+    if (email) proFields.email = email;
+    if (password) proFields.password = password;
+
+    console.log(`
+    this is the proField obj that i built:
+    ${JSON.stringify(proFields)}`);
+
+    try {
+        let pro = await User.findById(uid);
+
+        if (!pro) return res.status(404).json({ msg: 'profile not found' });
+
+        //make sure user owns job
+        if (uid.toString() !== req.user.id) {
+            return res.status(401).json({ msg: 'Not Authorized' });
+        }
+        p = await User.findByIdAndUpdate(uid, proFields, { new: true });
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error')
+    }
+
 })
 
 module.exports = router;

@@ -14,7 +14,7 @@ const TimecardSchema = mongoose.Schema({
         default: Date.now
     },
     clockOut: {
-        type: Date,
+        type: Date
     },
     breakIn: {
         type: Date

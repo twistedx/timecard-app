@@ -12,6 +12,7 @@ const auth = require('../middleware/auth');
 
 router.get('/', auth, async (req, res) => {
     const id = req.user.id;
+    const jid = req.params.jid;
     console.log(`this is the user id from req.user.id:
     ${id}`);
     try {
@@ -22,6 +23,31 @@ router.get('/', auth, async (req, res) => {
         res.status(500).send('Server Error')
     }
 })
+
+
+//@route        GET api/jobs/jid
+//@description  GET one job from the user
+//@access       PRIVATE 
+
+router.get('/:jid', auth, async (req, res) => {
+    const id = req.user.id;
+    const jid = req.params.jid;
+    console.log(`this is the user id from req.user.id:
+    ${id}`);
+    console.log(`this is the job id from req.params.jid:
+    ${jid}`);
+    try {
+        const jobs = await Job.find( { user: id,  _id: jid });
+        console.log(jobs);
+        res.json(jobs);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error')
+    }
+})
+
+
+
 
 //@route        POST api/jobs
 //@description  Add new job
@@ -72,9 +98,7 @@ router.put('/:id', auth, async (req, res) => {
         if (job.user.toString() !== req.user.id) {
             return res.status(401).json({ msg: 'Not Authorized' });
         }
-        job = await Job.findByIdAndUpdate(req.params.id,
-            { $set: jobFields },
-            { new: true });
+        let j = await Job.findByIdAndUpdate(job, jobFields, { new: true });
 
     } catch (err) {
         console.error(err.message);
