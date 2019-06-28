@@ -1,9 +1,13 @@
 #ForgotPassword {
-    margin: 10px;
+    margin-right: 10px;
 }
 
 #CreateAccount {
     margin: 10px;
+}
+
+#LoginBtn {
+    margin-top: 10px;
 }
 
 #ForgotPassword:hover {
