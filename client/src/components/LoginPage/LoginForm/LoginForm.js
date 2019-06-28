@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -37,9 +38,9 @@ class LoginForm extends Component {
                         <input id="password" type="password" className="validate" />
                         <label for="password">Password</label>
                         <div>
-                            <a id="ForgotPassword" href="#">Forgot My Password</a> | <a id="CreateAccount" href="#">Create account</a>
+                            <Link id="ForgotPassword" to="/forgotmypassword">Forgot My Password</Link> | <Link id="CreateAccount" to="/createaccount">Create account</Link>
                         </div>
-                        <a onClick={this.handleLogin.bind(this)} className="btn blue lighten-1" id="LoginBtn">Login</a>
+                        <Link onClick={this.handleLogin.bind(this)} to="" className="btn blue lighten-1" id="LoginBtn">Login</Link>
                     </form>
                 </div>
     
