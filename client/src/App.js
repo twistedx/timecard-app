@@ -27,10 +27,9 @@ const App = () => {
     M.AutoInit();
     authContext.loadUser();
     //eslint-disable-next-line
-  }, [])
+  }, []);
 
-
-  const App = () => {
+  return (
     <AuthState>
       <ContactState>
         <AlertState>
@@ -51,7 +50,9 @@ const App = () => {
         </AlertState>
       </ContactState>
     </AuthState>
-  );
+  )
 }
+
+
 
 export default App;
