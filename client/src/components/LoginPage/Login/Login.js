@@ -1,9 +1,9 @@
 import React from 'react';
-import './LoginPage.css';
-import Navbar from '../Navbar/Navbar.js';
+import './Login.css';
+import Navbar from '../../Layout/Navbar/Navbar.js';
 import LoginForm from '../LoginForm/LoginForm.js';
 import LoginPageLogo from '../LoginPageLogo/LoginPageLogo.js';
-import Footer from '../Footer/Footer.js';
+import Footer from '../../Layout/Footer/Footer.js';
 
 const LoginPage = () => {
     return (
