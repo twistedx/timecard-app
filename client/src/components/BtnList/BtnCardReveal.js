@@ -6,34 +6,40 @@ import './BtnCardReveal.css';
 
 const BtnCardReveal = (props) => {
     const [cardHeight, setCardHeight] = useState();
-    const [btnState, setBtnState] = useState('new tc');
+    // const [btnState, setBtnState] = useState('clocked in');
     const [btnValues, setBtnValues] = useState(['Clock In']);
 
     const btnSetter = state => {
         switch (state) {
-            case 'clocked in':
+            case 'Clock In':
+                // setBtnState('clocked in');
                 setBtnValues(['Lunch In', 'Break In', 'Clock Out']);
                 break;
-            case 'lunched in':
+            case 'Lunch In':
+                // setBtnState('lunched in');
                 setBtnValues(['Lunch Out']);
                 break;
-            case 'lunched out':
+            case 'Lunch Out':
+                // setBtnState('lunched out');
                 setBtnValues(['Break In', 'Clock Out']);
                 break;
-            case 'breaked in':
+            case 'Break In':
+                // setBtnState('breaked in');
                 setBtnValues(['Break Out']);
                 break;
-            case 'breaked out':
+            case 'Break Out':
+                // setBtnState('breaked out');
                 setBtnValues(['Break In', 'Clock Out']);
                 break;
-            case 'clocked out':
+            case 'Clock Out':
+                // setBtnState('clocked out');
                 setBtnValues(['Clock In']);
                 break;
         }
     }
 
     const btnArr = btnValues.map( v =>  
-        <li> <input type = 'button' value = {v} onClick = { btnSetter(btnValues) }/>  </li>
+        <li key = {v}> <input type = 'button' value = {v} onClick = { () =>   btnSetter(v) }/>  </li>
     );
     return (
         <div className = 'container'>
@@ -58,12 +64,6 @@ const BtnCardReveal = (props) => {
                     <ul>
                         <li> <input type = 'button' value = 'All Timecards' /> </li>
                         {btnArr}
-                        {/* <input type = 'button' value = 'Clock In' onClick = { } />
-                        <input type = 'button' value = 'Lunch In' onClick = { } />
-                        <input type = 'button' value = 'Break In' onClick = { } />
-                        <input type = 'button' value = 'Clock Out' onClick = { } />
-                        <input type = 'button' value = 'Lunch Out' onClick = { } />
-                        <input type = 'button' value = 'Break Out' onClick = { } /> */}
                     </ul>
                 </div>
             </div>
