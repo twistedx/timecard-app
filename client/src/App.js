@@ -1,4 +1,5 @@
 import LoginPage from './components/LoginPage/Login/Login';
+import Dashboard from './components/DashboardPage/Dashboard/Dashboard';
 import React, { Fragment, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar/Navbar';
@@ -34,6 +35,7 @@ const App = () => {
           <Route exact path='/about' component={About} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={LoginPage} />
+          <Route exact path='/dash' component={Dashboard} />
         </Switch>
       </Fragment>
     </Router>
