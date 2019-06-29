@@ -20,7 +20,8 @@
     "jsonwebtoken": "^8.5.1",
     "materialize-css": "^1.0.0",
     "moment": "^2.24.0",
-    "mongoose": "^5.6.0"
+    "mongoose": "^5.6.0",
+    "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
