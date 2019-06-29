@@ -3,7 +3,6 @@ import axios from "axios";
 import AuthContext from "./AuthContext";
 import authReducer from "./AuthReducer";
 import setAuthToken from "../../utils/setAuthToken";
-
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,

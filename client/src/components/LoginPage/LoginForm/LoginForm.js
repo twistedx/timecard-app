@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './LoginForm.css';
 
 class LoginForm extends Component {
-    
+
     handleLogin = e => {
         e.preventDefault();
 
@@ -30,7 +30,6 @@ class LoginForm extends Component {
 
         return (
             <div className="container">
-    
                 <div className="row">
                     <form className="col s12 m12 l12" id="loginForm">
                         <input id="email" type="email" className="validate" />
@@ -43,7 +42,7 @@ class LoginForm extends Component {
                         <Link onClick={this.handleLogin.bind(this)} to="" className="btn blue lighten-1" id="LoginBtn">Login</Link>
                     </form>
                 </div>
-    
+
             </div>
         );
 

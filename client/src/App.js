@@ -1,12 +1,12 @@
 import LoginPage from './components/LoginPage/Login/Login';
 import React, { Fragment, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Layout/Navbar/Navbar';
 import About from './components/pages/About';
 import Register from './components/Register/Register';
 import AuthContext from './context/auth/AuthContext';
 import AuthState from './context/auth/AuthState';
 import setAuthToken from './utils/setAuthToken';
+import AlertState from './context/alert/AlertState';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
@@ -26,18 +26,20 @@ const App = () => {
   }, []);
 
   return (
-    // <AuthState>
-    <Router>
-      <Fragment>
-        <Switch>
-          <Route exact path='/' component={LoginPage} />
-          <Route exact path='/about' component={About} />
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/login' component={LoginPage} />
-        </Switch>
-      </Fragment>
-    </Router>
-    // </AuthState>
+    <AuthState>
+      <AlertState>
+        <Router>
+          <Fragment>
+            <Switch>
+              <Route exact path='/' component={LoginPage} />
+              <Route exact path='/about' component={About} />
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={LoginPage} />
+            </Switch>
+          </Fragment>
+        </Router>
+      </AlertState>
+    </AuthState>
   )
 }
 
