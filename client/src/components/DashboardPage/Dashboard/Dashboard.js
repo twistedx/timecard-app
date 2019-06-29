@@ -27,6 +27,24 @@ const Dashboard = () => {
                             role = 'this is a test role'
                             type = 'this is a test job type'
                         />
+                                                <BtnCardReveal 
+                            title = 'TEST JOB TITLE BLAH BLAH'
+                            description = 'This is a test job description'
+                            role = 'this is a test role'
+                            type = 'this is a test job type'
+                        />
+                                                <BtnCardReveal 
+                            title = 'TEST JOB TITLE BLAH BLAH'
+                            description = 'This is a test job description'
+                            role = 'this is a test role'
+                            type = 'this is a test job type'
+                        />
+                                                <BtnCardReveal 
+                            title = 'TEST JOB TITLE BLAH BLAH'
+                            description = 'This is a test job description'
+                            role = 'this is a test role'
+                            type = 'this is a test job type'
+                        />
                     </body>
                 </main>
                 <footer>

@@ -1,38 +1,47 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './BtnCardReveal.css';
 
 
 
 
 const BtnCardReveal = (props) => {
+    const initialState = []
+    // useEffect( () => {
+    //     const savedState = window.localStorage.getItem('btnState') || ['Clock In'];
+    //     initialState.push(savedState);
+    //     console.log(`
+        
+    //     this is the initial state of the local storage
+    //     ${initialState}`)
+    // },[]);
+
     const [cardHeight, setCardHeight] = useState();
-    // const [btnState, setBtnState] = useState('clocked in');
     const [btnValues, setBtnValues] = useState(['Clock In']);
 
     const btnSetter = state => {
         switch (state) {
             case 'Clock In':
-                // setBtnState('clocked in');
+                window.localStorage.setItem('btnState', state);
                 setBtnValues(['Lunch In', 'Break In', 'Clock Out']);
                 break;
             case 'Lunch In':
-                // setBtnState('lunched in');
+                window.localStorage.setItem('btnState', state);
                 setBtnValues(['Lunch Out']);
                 break;
             case 'Lunch Out':
-                // setBtnState('lunched out');
+                window.localStorage.setItem('btnState', state);
                 setBtnValues(['Break In', 'Clock Out']);
                 break;
             case 'Break In':
-                // setBtnState('breaked in');
+                window.localStorage.setItem('btnState', state);
                 setBtnValues(['Break Out']);
                 break;
             case 'Break Out':
-                // setBtnState('breaked out');
+                window.localStorage.setItem('btnState', state);
                 setBtnValues(['Break In', 'Clock Out']);
                 break;
             case 'Clock Out':
-                // setBtnState('clocked out');
+                window.localStorage.setItem('btnState', state);
                 setBtnValues(['Clock In']);
                 break;
         }
@@ -65,6 +74,9 @@ const BtnCardReveal = (props) => {
                         <li> <input type = 'button' value = 'All Timecards' /> </li>
                         {btnArr}
                     </ul>
+                    <div>
+                        you've clocked in at blah o clock
+                    </div>
                 </div>
             </div>
         </div>
