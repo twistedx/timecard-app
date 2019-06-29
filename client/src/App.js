@@ -1,14 +1,10 @@
-import LoginPage from './components/LoginPage/LoginPage.js';
+import LoginPage from './components/LoginPage/Login/Login';
 import React, { Fragment, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/layout/Navbar';
-import Home from './components/pages/Home';
+import Navbar from './components/Layout/Navbar/Navbar';
 import About from './components/pages/About';
-import Register from './components/auth/Register';
-import AlertState from './context/alert/AlertState'
-import Alerts from './components/layout/Alerts';
-import AuthContext from '../../context/auth/AuthContext';
-import ContactState from './context/contact/ContactState';
+import Register from './components/Register/Register';
+import AuthContext from './context/auth/AuthContext';
 import AuthState from './context/auth/AuthState';
 import setAuthToken from './utils/setAuthToken';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -25,33 +21,26 @@ const App = () => {
 
   useEffect(() => {
     M.AutoInit();
-    authContext.loadUser();
+    // authContext.loadUser();
     //eslint-disable-next-line
-  }, [])
+  }, []);
 
-
-  const App = () => {
-    <AuthState>
-      <ContactState>
-        <AlertState>
-          <Router>
-            <Fragment>
-              <Navbar />
-              <div className="container">
-                <Alerts />
-                <Switch>
-                  <Route exact path='/' component={Home} />
-                  <Route exact path='/about' component={About} />
-                  <Route exact path='/register' component={Register} />
-                  <Route exact path='/login' component={LoginPage} />
-                </Switch>
-              </div>
-            </Fragment>
-          </Router>
-        </AlertState>
-      </ContactState>
-    </AuthState>
-  );
+  return (
+    // <AuthState>
+    <Router>
+      <Fragment>
+        <Switch>
+          <Route exact path='/' component={LoginPage} />
+          <Route exact path='/about' component={About} />
+          <Route exact path='/register' component={Register} />
+          <Route exact path='/login' component={LoginPage} />
+        </Switch>
+      </Fragment>
+    </Router>
+    // </AuthState>
+  )
 }
+
+
 
 export default App;
