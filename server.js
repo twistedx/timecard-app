@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const app = express();
 const path = require('path');
+const cors = require('cors');
 
 app.get('/', (req, res) => res.json({ msg: 'Hello World' }))
 app.get('/admin', (req,res) => {
@@ -16,6 +17,7 @@ connectDB();
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
+app.use(cors());
 
 //admin public folder
 app.use(express.static('public'));
