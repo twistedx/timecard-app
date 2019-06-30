@@ -1,20 +1,19 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import AuthContext from '../../../context/auth/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import setAuthToken from '../../../utils/setAuthToken';
 
 const LoginForm = props => {
 
     const authContext = useContext(AuthContext);
 
+    const { login } = authContext;
 
-    const { login, isAuthenticated } = authContext;
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+        props.history.push('/');
+    }
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            props.history.push('/');
-        }
-
-    }, [isAuthenticated, props.history]);
 
     const [user, setUser] = useState({
         email: '',
@@ -72,6 +71,6 @@ const LoginForm = props => {
     );
 };
 
-export default LoginForm;
+export default withRouter(LoginForm);
 
 

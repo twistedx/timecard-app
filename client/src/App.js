@@ -1,6 +1,6 @@
 import LoginPage from './components/LoginPage/Login/Login';
 import Dashboard from './components/DashboardPage/Dashboard/Dashboard';
-import React, { Fragment, useEffect, useContext } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import About from './components/pages/About';
 import Register from './components/Register/Register';
@@ -26,17 +26,15 @@ const App = () => {
       <Router>
         <Fragment>
           <Switch>
-            <Route exact path='/' component={LoginPage} />
-            <Route exact path='/about' component={About} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={LoginPage} />
+            <Route exact path='/' component={Dashboard} key={Dashboard.name} />
+            <Route exact path='/about' component={About} key={About.name} />
+            <Route exact path='/register' component={Register} key={Register.name} />
+            <Route exact path='/login' component={LoginPage} key={LoginPage.name} />
           </Switch>
         </Fragment>
       </Router>
     </AuthState>
   )
 }
-
-
 
 export default App;
