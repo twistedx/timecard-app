@@ -8,6 +8,8 @@ import AuthState from './context/auth/AuthState';
 import setAuthToken from './utils/setAuthToken';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import Footer from './components/Layout/Footer/Footer';
+import Navbar from './components/Layout/Navbar/Navbar';
 import './App.css';
 
 if (localStorage.token) {
@@ -24,15 +26,17 @@ const App = () => {
   return (
     <AuthState>
       <Router>
-        <Fragment>
+        <Navbar title="Timecard App" />
+        <body>
           <Switch>
             <Route exact path='/' component={Dashboard} key={Dashboard.name} />
             <Route exact path='/about' component={About} key={About.name} />
             <Route exact path='/register' component={Register} key={Register.name} />
             <Route exact path='/login' component={LoginPage} key={LoginPage.name} />
           </Switch>
-        </Fragment>
+        </body>
       </Router>
+      <Footer />
     </AuthState>
   )
 }

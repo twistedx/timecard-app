@@ -35,6 +35,7 @@ const LoginForm = props => {
     };
 
     return (
+
         <div className='form-container'>
             <h1>
                 Account <span className='text-primary'>Login</span>
@@ -66,8 +67,11 @@ const LoginForm = props => {
                     className='btn btn-primary btn-block'
                 />
             </form>
-            <Link id="ForgotPassword" to="/forgotmypassword">Forgot My Password</Link> | <Link id="CreateAccount" to="/createaccount">Create account</Link>
+            <div className="center">
+                <Link id="ForgotPassword" to="/forgotmypassword">Forgot My Password  </Link> | <Link id="CreateAccount" to="/register">  Create account</Link>
+            </div>
         </div>
+
     );
 };
 
