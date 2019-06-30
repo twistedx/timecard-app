@@ -1,53 +1,77 @@
-import React, { Component } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import AuthContext from '../../../context/auth/AuthContext';
 import { Link } from 'react-router-dom';
-import './LoginForm.css';
 
-class LoginForm extends Component {
+const LoginForm = props => {
 
-    handleLogin = e => {
+    const authContext = useContext(AuthContext);
+
+
+    const { login, isAuthenticated } = authContext;
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            props.history.push('/');
+        }
+
+    }, [isAuthenticated, props.history]);
+
+    const [user, setUser] = useState({
+        email: '',
+        password: ''
+    });
+
+    const { email, password } = user;
+
+    const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+
+    const onSubmit = e => {
         e.preventDefault();
 
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+        login({
+            email,
+            password
+        });
 
-        console.log(email, password);
+    };
 
-        this.resetLoginForm();
-
-        alert("Clicked and form reset");
-
-    }
-
-    resetLoginForm() {
-        const email = document.getElementById("email");
-        const password = document.getElementById("password");
-
-        email.value = "";
-        password.value = "";
-    }
-
-    render() {
-
-        return (
-            <div className="container">
-                <div className="row">
-                    <form className="col s12 m12 l12" id="loginForm">
-                        <input id="email" type="email" className="validate" />
-                        <label for="email">Email</label>
-                        <input id="password" type="password" className="validate" />
-                        <label for="password">Password</label>
-                        <div>
-                            <Link id="ForgotPassword" to="/forgotmypassword">Forgot My Password</Link> | <Link id="CreateAccount" to="/createaccount">Create account</Link>
-                        </div>
-                        <Link onClick={this.handleLogin.bind(this)} to="" className="btn blue lighten-1" id="LoginBtn">Login</Link>
-                    </form>
+    return (
+        <div className='form-container'>
+            <h1>
+                Account <span className='text-primary'>Login</span>
+            </h1>
+            <form onSubmit={onSubmit}>
+                <div className='form-group'>
+                    <label htmlFor='email'>Email Address</label>
+                    <input
+                        type='email'
+                        name='email'
+                        value={email}
+                        onChange={onChange}
+                        required
+                    />
                 </div>
-
-            </div>
-        );
-
-    }
-
-}
+                <div className='form-group'>
+                    <label htmlFor='password'>Password</label>
+                    <input
+                        type='password'
+                        name='password'
+                        value={password}
+                        onChange={onChange}
+                        required
+                    />
+                </div>
+                <input
+                    type='submit'
+                    value='Login'
+                    className='btn btn-primary btn-block'
+                />
+            </form>
+            <Link id="ForgotPassword" to="/forgotmypassword">Forgot My Password</Link> | <Link id="CreateAccount" to="/createaccount">Create account</Link>
+        </div>
+    );
+};
 
 export default LoginForm;
+
+
