@@ -1,27 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './Login.css';
-import Navbar from '../../Layout/Navbar/Navbar.js';
 import LoginForm from '../LoginForm/LoginForm.js';
 import LoginPageLogo from '../LoginPageLogo/LoginPageLogo.js';
-import Footer from '../../Layout/Footer/Footer.js';
+
 
 const LoginPage = () => {
     return (
         [
-            <div>
-                <header>
-                    <Navbar title="Timecard App" />
-                </header>
+            <Fragment>
                 <main>
-                    <body>
-                    <LoginPageLogo />
-                    <LoginForm />
-                    </body>
+                    <div className="container">
+                        <LoginPageLogo />
+                        <LoginForm />
+                    </div>
                 </main>
-                <footer>
-                    <Footer />
-                </footer>
-            </div>
+            </Fragment>
         ]
     )
 }
