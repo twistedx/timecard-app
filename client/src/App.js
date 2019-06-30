@@ -1,7 +1,7 @@
 import LoginPage from './components/LoginPage/Login/Login';
-import React, { Fragment, useEffect } from 'react';
+import Dashboard from './components/DashboardPage/Dashboard/Dashboard';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import About from './components/pages/About';
 import Register from './components/Register/Register';
 import AuthState from './context/auth/AuthState';
