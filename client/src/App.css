@@ -1,3 +1,8 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
 .App {
   text-align: center;
 }
@@ -30,4 +35,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 25px;
+}
+
+.collection {
+  border-radius: 25px;
+  padding: 20px; 
 }

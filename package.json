@@ -21,7 +21,12 @@
     "jsonwebtoken": "^8.5.1",
     "materialize-css": "^1.0.0",
     "moment": "^2.24.0",
+<<<<<<< HEAD
+    "mongoose": "^5.6.0",
+    "react-router-dom": "^5.0.1"
+=======
     "mongoose": "^5.6.0"
+>>>>>>> 32cc4cad29dfcce3475fec3b716aebfd0725190c
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
