@@ -6,14 +6,6 @@ import './BtnCardReveal.css';
 
 const BtnCardReveal = (props) => {
     const initialState = []
-    // useEffect( () => {
-    //     const savedState = window.localStorage.getItem('btnState') || ['Clock In'];
-    //     initialState.push(savedState);
-    //     console.log(`
-        
-    //     this is the initial state of the local storage
-    //     ${initialState}`)
-    // },[]);
 
     const [cardHeight, setCardHeight] = useState();
     const [btnValues, setBtnValues] = useState(['Clock In']);

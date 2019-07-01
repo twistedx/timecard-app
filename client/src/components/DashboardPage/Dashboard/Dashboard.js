@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Navbar from '../../Layout/Navbar/Navbar.js';
 import UserDashboardCard from '../UserDashboardCard/UserDashboardCard.js';
 import BtnCardReveal from '../../BtnList/BtnCardReveal';
+import { useHttp } from '../../Hooks/Fetch';
 import AuthContext from '../../../context/auth/AuthContext';
 import setAuthToken from '../../../utils/setAuthToken';
 
@@ -21,45 +22,90 @@ const Dashboard = (props) => {
     }
 
 
+    console.log(`
+    this is the token:
+    ${authContext.token}
+    
+    `)
+
+    
+    const loading = 'loading . . .';
+    const [profile, setProfile] = useState(loading)
+    const profileLoadingChecker = ( obj )  => { obj ? setProfile(obj) : setProfile(loading) };
+
+    const [jobs, setJobs] = useState(loading)
+    const jobsLoadingChecker = ( arr )  => { arr[0] ? setJobs(arr) : setJobs(loading) };
+
+    const token = authContext.token;
+    let h = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+    h['x-auth-token'] = token;
+
+    //fetch user profile =============================================================================================
+        let fetchedProfile = useHttp('http://localhost:5000/api/user', 'GET', '', h, []);
+        const p = fetchedProfile[1];
+
+        useEffect( () => profileLoadingChecker(p[0]), [p[0]] );
+        
+        const profileloading = fetchedProfile[0];
+
+
+        if(profile){
+            console.log(`
+        
+            this is fetchedprofile
+            ${profile.name}
+            
+            `);
+        }
+
+        
+        
+    //fetch Job Profile ==============================================================================================
+        let fetchedJobs = useHttp('http://localhost:5000/api/job', 'GET', '', h, []);
+        const jobloading = fetchedJobs[0];
+        const j = fetchedJobs[1];
+
+        useEffect( () => jobsLoadingChecker(j), [j] );
+
+        console.log(`
+        
+        this is jobprofile
+        ${j}
+        
+        `);
+        
+
+
+    // load dom ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
     return (
         <div>
-
+            
             <header>
-                <Navbar title="Dashboard">
-
-                </Navbar>
+                <Navbar title="Dashboard"></Navbar>
             </header>
             <main>
                 <body>
-                    <UserDashboardCard
-                        name="Rambo"
-                        email="Rambo@rambo.com"
-                        jobTitle="Test"
+                    <UserDashboardCard 
+                        name= { profile === loading ? profile : profile.name }
+                        email= { profile === loading ? profile : profile.email }
+                        jobTitle= { profile === loading ? profile : profile.date }
                     />
-                    <BtnCardReveal
-                        title='TEST JOB TITLE BLAH BLAH'
-                        description='This is a test job description'
-                        role='this is a test role'
-                        type='this is a test job type'
-                    />
-                    <BtnCardReveal
-                        title='TEST JOB TITLE BLAH BLAH'
-                        description='This is a test job description'
-                        role='this is a test role'
-                        type='this is a test job type'
-                    />
-                    <BtnCardReveal
-                        title='TEST JOB TITLE BLAH BLAH'
-                        description='This is a test job description'
-                        role='this is a test role'
-                        type='this is a test job type'
-                    />
-                    <BtnCardReveal
-                        title='TEST JOB TITLE BLAH BLAH'
-                        description='This is a test job description'
-                        role='this is a test role'
-                        type='this is a test job type'
-                    />
+
+                    { jobs === loading ? jobs : jobs.map( (v, i) => {
+                        return <BtnCardReveal
+                        key = { i }
+                        title = { v.name }
+                        description = { v.description }
+                        role = { v.role }
+                        type = { v.jobType }
+                        />
+                        }) 
+                    }
                 </body>
             </main>
         </div>
