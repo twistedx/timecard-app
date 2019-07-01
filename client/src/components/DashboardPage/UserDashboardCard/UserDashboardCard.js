@@ -13,7 +13,7 @@ const UserDashboardCard = props => {
                                     <li>Job Title: {props.jobTitle}</li>
                                 </ul>
                             <div className="card-action">
-                                <a className="blue-text" href="#">Edit Profile</a>
+                                {/* <a className="blue-text" href="#">Edit Profile</a> */}
                             </div>
                         </div>
                 </div>

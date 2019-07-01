@@ -73,7 +73,7 @@ const Dashboard = (props) => {
         console.log(`
         
         this is jobprofile
-        ${j}
+        ${JSON.stringify(j)}
         
         `);
         
@@ -99,6 +99,7 @@ const Dashboard = (props) => {
                     { jobs === loading ? jobs : jobs.map( (v, i) => {
                         return <BtnCardReveal
                         key = { i }
+                        jobId = { v._id }
                         title = { v.name }
                         description = { v.description }
                         role = { v.role }
