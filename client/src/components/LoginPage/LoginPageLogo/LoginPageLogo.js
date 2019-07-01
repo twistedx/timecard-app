@@ -6,7 +6,7 @@ const LoginPageLogo = () => {
         <div className="container">
             <div className="row">
                 <div className="col s12 m12 l12 center">
-                <img className="PlaceholderImg" src="https://via.placeholder.com/150"></img>
+                <img className="PlaceholderImg" src="https://via.placeholder.com/150" alt=''></img>
                 </div>
             </div>
         </div>

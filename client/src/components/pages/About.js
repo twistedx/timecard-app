@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
+import setAuthToken from "../../utils/setAuthToken";
+import AuthContext from '../../context/auth/AuthContext';
 
-const About = () => {
+const About = (props) => {
+
+    const authContext = useContext(AuthContext);
+
+    useEffect(() => {
+        authContext.loadUser();
+    }, [])
+
+
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    } else {
+        props.history.push('/login');
+    }
+
     return (
         <div>
             <h1>About This App</h1>

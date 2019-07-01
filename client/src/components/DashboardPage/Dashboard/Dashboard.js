@@ -1,12 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Navbar from '../../Layout/Navbar/Navbar.js';
 import UserDashboardCard from '../UserDashboardCard/UserDashboardCard.js';
-import Footer from '../../Layout/Footer/Footer.js';
 import BtnCardReveal from '../../BtnList/BtnCardReveal';
 import { useHttp } from '../../Hooks/Fetch';
+import AuthContext from '../../../context/auth/AuthContext';
+import setAuthToken from '../../../utils/setAuthToken';
+
+const Dashboard = (props) => {
+
+    const authContext = useContext(AuthContext);
+
+    useEffect(() => {
+        authContext.loadUser();
+    }, [])
 
 
-const Dashboard = () => {
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    } else {
+        props.history.push('/login');
+    }
+
+
+
     const loading = 'loading . . .';
     const [profile, setProfile] = useState(loading)
     const profileLoadingChecker = ( obj )  => { obj ? setProfile(obj) : setProfile(loading) };
@@ -65,9 +81,7 @@ const Dashboard = () => {
         <div>
             
             <header>
-                <Navbar title="Dashboard">
-                    
-                </Navbar>
+                <Navbar title="Dashboard"></Navbar>
             </header>
             <main>
                 <body>
@@ -89,10 +103,6 @@ const Dashboard = () => {
                     }
                 </body>
             </main>
-            <footer>
-                <Footer />
-            </footer>
-            
         </div>
     )
 }

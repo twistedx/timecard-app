@@ -5,7 +5,7 @@ const path = require('path');
 const cors = require('cors');
 
 app.get('/', (req, res) => res.json({ msg: 'Hello World' }))
-app.get('/admin', (req,res) => {
+app.get('/admin', (req, res) => {
     console.log('admin page start');
     res.sendFile(path.join(__dirname, 'public', 'admin.html'))
 });
@@ -17,7 +17,10 @@ connectDB();
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: ['localhost:5000']
+}));
 
 //admin public folder
 app.use(express.static('public'));
