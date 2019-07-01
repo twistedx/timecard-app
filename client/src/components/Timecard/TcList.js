@@ -6,8 +6,8 @@ const TcList = props => {
 
 
   return (
-    <div>
-      <div className="card" style = {{ height: cardHeight }}>
+    <div className="container">
+      <div className="card" style = {{ height: cardHeight, display: 'grid'}}>
         <div className="card-content">
           <span className="card-title activator grey-text text-darken-4" onClick = { () => setCardHeight('300px') } >
             Timecard<i class="material-icons right">more_vert</i>
@@ -46,24 +46,6 @@ const TcList = props => {
               <Col><span class="badge">2321</span>Lunch In:</Col>
               <Col><span class="badge">2321</span>Clock Out:</Col>
             </Row>
-            {/* <div className="collection-item">
-              
-            </div>
-            <div className="collection-item">
-              
-            </div>
-            <div className="collection-item">
-              
-            </div>
-            <div className="collection-item">
-              
-            </div>
-            <div className="collection-item">
-              
-            </div>
-            <div className="collection-item">
-              
-            </div> */}
           </Container>
         </div>
       </div>
