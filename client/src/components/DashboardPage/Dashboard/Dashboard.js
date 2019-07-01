@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import Navbar from '../../Layout/Navbar/Navbar.js';
 import UserDashboardCard from '../UserDashboardCard/UserDashboardCard.js';
-import Footer from '../../Layout/Footer/Footer.js';
 import BtnCardReveal from '../../BtnList/BtnCardReveal';
 import AuthContext from '../../../context/auth/AuthContext';
 import setAuthToken from '../../../utils/setAuthToken';
@@ -63,10 +62,6 @@ const Dashboard = (props) => {
                     />
                 </body>
             </main>
-            <footer>
-                <Footer />
-            </footer>
-
         </div>
     )
 }
