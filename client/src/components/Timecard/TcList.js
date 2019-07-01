@@ -1,4 +1,5 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 
 const TcList = props => {
   const [cardHeight, setCardHeight] = useState();
@@ -34,26 +35,36 @@ const TcList = props => {
               {props.type}
             </div>
           </p>
-          <div className="collection">
-            <div className="collection-item">
-              <span class="badge">1212</span>Clock In:
+          <Container>
+            <Row>
+              <Col><span class="badge">1212</span>Clock In:</Col>
+              <Col><span class="badge">1133</span>Break Out:</Col>
+              <Col><span class="badge">1132</span>Break In:</Col>
+            </Row>
+            <Row>
+              <Col><span class="badge">1232</span>Lunch Out:</Col>
+              <Col><span class="badge">2321</span>Lunch In:</Col>
+              <Col><span class="badge">2321</span>Clock Out:</Col>
+            </Row>
+            {/* <div className="collection-item">
+              
             </div>
             <div className="collection-item">
-              <span class="badge">1133</span>Break Out:
+              
             </div>
             <div className="collection-item">
-              <span class="badge">1132</span>Break In:
+              
             </div>
             <div className="collection-item">
-              <span class="badge">1232</span>Lunch Out:
+              
             </div>
             <div className="collection-item">
-              <span class="badge">2321</span>Lunch In:
+              
             </div>
             <div className="collection-item">
-              <span class="badge">2321</span>Clock Out:
-            </div>
-          </div>
+              
+            </div> */}
+          </Container>
         </div>
       </div>
     </div>
