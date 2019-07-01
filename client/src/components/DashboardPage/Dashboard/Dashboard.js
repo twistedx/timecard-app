@@ -22,7 +22,13 @@ const Dashboard = (props) => {
     }
 
 
+    console.log(`
+    this is the token:
+    ${authContext.token}
+    
+    `)
 
+    
     const loading = 'loading . . .';
     const [profile, setProfile] = useState(loading)
     const profileLoadingChecker = ( obj )  => { obj ? setProfile(obj) : setProfile(loading) };
@@ -30,7 +36,7 @@ const Dashboard = (props) => {
     const [jobs, setJobs] = useState(loading)
     const jobsLoadingChecker = ( arr )  => { arr[0] ? setJobs(arr) : setJobs(loading) };
 
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQwYzIzN2M5OTIzYjcwYTcwNTcxZjdlIn0sImlhdCI6MTU2MTkyNTQ2MSwiZXhwIjoxNTYxOTI5MDYxfQ.N-b7qw1wXlVXkh5vb2ukmt2jpRdJwf2u9SIf8dQ89Q8';
+    const token = authContext.token;
     let h = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -59,7 +65,6 @@ const Dashboard = (props) => {
         
     //fetch Job Profile ==============================================================================================
         let fetchedJobs = useHttp('http://localhost:5000/api/job', 'GET', '', h, []);
-        // const jobProfile = fetchedJobs[1];
         const jobloading = fetchedJobs[0];
         const j = fetchedJobs[1];
 

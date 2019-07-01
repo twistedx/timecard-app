@@ -8,7 +8,7 @@ let token;
 
 // login=============================================================================================
 login = () => {
-    // let logval = document.getElementById('log').value;
+    let logval = document.getElementById('log').value;
     // console.log(logval);
 
     fetch('/api/auth', {
