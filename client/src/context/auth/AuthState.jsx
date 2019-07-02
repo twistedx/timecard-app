@@ -12,7 +12,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  SET_NAME
 } from "../types";
 
 const AuthState = props => {
@@ -21,7 +22,8 @@ const AuthState = props => {
     isAuthenticated: null,
     loading: true,
     user: null,
-    error: null
+    error: null,
+    appName: ""
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -94,6 +96,11 @@ const AuthState = props => {
     }
   };
 
+  const setAppName = appName => {
+    dispatch({ type: SET_NAME, appName: appName });
+    console.log("Set App Name Fired");
+  };
+
   // Logout
   const logout = () => dispatch({ type: LOGOUT });
 
@@ -112,7 +119,8 @@ const AuthState = props => {
         loadUser,
         login,
         logout,
-        clearErrors
+        clearErrors,
+        setAppName
       }}
     >
       {props.children}
