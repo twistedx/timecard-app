@@ -42,7 +42,6 @@ const Navbar = (props) => {
 
     return (
 
-
         <nav className="nav-wrapper blue lighten-1">
             <a href="#!" className="brand-logo center"> {isAuthenticated ? "Dashboard" : props.appName} </a>
             <ul>{isAuthenticated ? authLinks : guestLinks}</ul>

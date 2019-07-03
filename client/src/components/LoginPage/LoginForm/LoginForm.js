@@ -64,11 +64,11 @@ const LoginForm = props => {
                 <input
                     type='submit'
                     value='Login'
-                    className='btn btn-primary btn-block'
+                    className='btn btn-primary btn-block blue lighten-1'
                 />
             </form>
             <div className="center">
-                <Link id="ForgotPassword" to="/forgotmypassword">Forgot My Password  </Link> | <Link id="CreateAccount" to="/register">  Create account</Link>
+                <Link id="ForgotPassword" to="/forgotmypassword">Forgot My Password  </Link> | <Link id="CreateAccount" to="/register">  Create Account</Link>
             </div>
         </div>
 
