@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../../context/auth/AuthContext';
 import PropTypes from 'prop-types';
 import './Navbar.css';
+import Register from '../../Register/Register';
+import LoginForm from '../../LoginPage/LoginForm/LoginForm';
 
 const Navbar = (props) => {
     const authContext = useContext(AuthContext);
@@ -26,7 +28,7 @@ const Navbar = (props) => {
     const guestLinks = (
         <Fragment>
             <div className="right">
-                <li >
+                <li>
                     <Link to='/register'>Register</Link>
                 </li>
                 <li>

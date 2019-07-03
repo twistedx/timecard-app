@@ -37,8 +37,8 @@ const App = () => {
             <Route exact path='/timecards' component={TimecardPage} key={TimecardPage.name} />
           </Switch>
         </body>
+        <Footer />
       </Router>
-      <Footer />
     </AuthState>
   )
 }
