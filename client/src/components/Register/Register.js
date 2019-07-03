@@ -19,11 +19,12 @@ const Register = props => {
     const [user, setUser] = useState({
         name: '',
         email: '',
+        title: '',
         password: '',
         password2: ''
     });
 
-    const { name, email, password, password2 } = user;
+    const { name, email, title, password, password2 } = user;
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
@@ -32,6 +33,7 @@ const Register = props => {
         register({
             name,
             email,
+            title,
             password
         });
     }
@@ -62,6 +64,15 @@ const Register = props => {
                             value={email}
                             onChange={onChange}
                             required
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='title'>Enter your Title</label>
+                        <input
+                            type='text'
+                            name='title'
+                            value={title}
+                            onChange={onChange}
                         />
                     </div>
                     <div className='form-group'>
