@@ -8,6 +8,7 @@ export const useHttp = (url, method, body, headers, dependencies) => {
         setIsLoading(true);
 
         if(method === 'GET'){
+            console.log('get method fired');
             fetch(url, {
                 method: method,
                 headers: headers
@@ -25,6 +26,7 @@ export const useHttp = (url, method, body, headers, dependencies) => {
                 setIsLoading(false);
             })
         } else {
+            console.log('any other method fired');
             fetch(url, {
                 method: method,
                 body: body,

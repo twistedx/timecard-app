@@ -18,10 +18,17 @@
     left: calc(50% - 250px);
     box-shadow: 2px 2px 5px;
 }
+#modal input {
+    font-size: 12px;
+    height: 20px;
+}
 #close {
     position: absolute;
     right: 5px;
     top: 5px;
     width: 30px;
     height: 30px;
+}
+form button {
+    margin-top: 15px;
 }
