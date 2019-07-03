@@ -22,7 +22,7 @@ router.post('/', [
     }
 
 
-    const { name, email, password } = req.body;
+    const { name, email, title, password } = req.body;
     try {
         let user = await User.findOne({ email });
         if (user) {
@@ -31,6 +31,7 @@ router.post('/', [
         user = new User({
             name,
             email,
+            title,
             password
         });
 

@@ -17,7 +17,11 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     title: {
+<<<<<<< HEAD
         type: String,
+=======
+        type: String
+>>>>>>> 9304afbc5fc65adb201e513ff954f0c4d33c632a
     },
     date: {
         type: Date,

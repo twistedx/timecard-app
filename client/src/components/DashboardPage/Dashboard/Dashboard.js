@@ -92,7 +92,7 @@ const Dashboard = (props) => {
                     <UserDashboardCard
                         name={profile === loading ? profile : profile.name}
                         email={profile === loading ? profile : profile.email}
-                        jobTitle={profile === loading ? profile : profile.date}
+                        jobTitle={profile === loading ? profile : profile.title}
                     />
 
                     {jobs === loading ? jobs : jobs.map((v, i) => {
