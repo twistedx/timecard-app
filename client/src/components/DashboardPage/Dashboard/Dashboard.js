@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserDashboardCard from '../UserDashboardCard/UserDashboardCard.js';
 import BtnCardReveal from '../../BtnList/BtnCardReveal';
+import Modal from '../../Modal/JobModal'
 import { useHttp } from '../../Hooks/Fetch';
 import AuthContext from '../../../context/auth/AuthContext';
 import setAuthToken from '../../../utils/setAuthToken';
+import loadingImg from '../../../img/loading.gif';
+import { inherits } from 'util';
 
 const Dashboard = (props) => {
 
@@ -30,6 +33,7 @@ const Dashboard = (props) => {
     `)
 
 
+    // const loading = 'loading . . .';
     const loading = 'loading . . .';
     const [profile, setProfile] = useState(loading)
     const profileLoadingChecker = (obj) => { obj ? setProfile(obj) : setProfile(loading) };
@@ -74,7 +78,7 @@ const Dashboard = (props) => {
     console.log(`
         
         this is jobprofile
-        ${j}
+        ${JSON.stringify(j)}
         
         `);
 
@@ -85,7 +89,7 @@ const Dashboard = (props) => {
 
     return (
         <div>
-
+            <Modal token = {token}/>
             <main>
                 <body>
                     <UserDashboardCard
@@ -94,13 +98,14 @@ const Dashboard = (props) => {
                         jobTitle={profile === loading ? profile : profile.title}
                     />
 
-                    {jobs === loading ? jobs : jobs.map((v, i) => {
+                    {jobs === loading ? <img src = {loadingImg} style = {{height: '200px', width: '200px', position: 'absolute', top: 'calc(50% - 100px', left: 'calc(50% - 100px'}}/> : jobs.map((v, i) => {
                         return <BtnCardReveal
-                            key={i}
-                            title={v.name}
-                            description={v.description}
-                            role={v.role}
-                            type={v.jobType}
+                        key = { i }
+                        jobId = { v._id }
+                        title = { v.name }
+                        description = { v.description }
+                        role = { v.role }
+                        type = { v.jobType }
                         />
                     })
                     }

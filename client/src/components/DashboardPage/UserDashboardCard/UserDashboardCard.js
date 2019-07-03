@@ -10,10 +10,10 @@ const UserDashboardCard = props => {
                                 <ul className="profileInfo">
                                     <li>Name: {props.name}</li>
                                     <li>Email: {props.email}</li>
-                                    <li>Job Title: {props.jobTitle}</li>
+                                    <li>Title: {props.jobTitle}</li>
                                 </ul>
                             <div className="card-action">
-                                <a className="blue-text" href="#">Edit Profile</a>
+                                {/* <a className="blue-text" href="#">Edit Profile</a> */}
                             </div>
                         </div>
                 </div>

@@ -1,19 +1,45 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react'
 import './BtnCardReveal.css';
+import { useHttp } from '../Hooks/Fetch';
+import AuthContext from '../../context/auth/AuthContext';
+import setAuthToken from '../../utils/setAuthToken';
 
 
 
 
 const BtnCardReveal = (props) => {
+    //set auth=========================================================================
+    const authContext = useContext(AuthContext);
+
+    useEffect(() => {
+        authContext.loadUser();
+    }, [])
+
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    }
+
+    const token = authContext.token;
+    let h = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+    h['x-auth-token'] = token;
+
+    // let result = useHttp('http://localhost:5000/api/job', 'POST', '', h, []);
+
+
     const initialState = []
 
     const [cardHeight, setCardHeight] = useState();
     const [btnValues, setBtnValues] = useState(['Clock In']);
 
-    const btnSetter = state => {
+    const btnSetter = (state,jid) => {
         switch (state) {
             case 'Clock In':
-                window.localStorage.setItem('btnState', state);
+                console.log('this is the jid', jid)
+                
+
                 setBtnValues(['Lunch In', 'Break In', 'Clock Out']);
                 break;
             case 'Lunch In':
@@ -39,12 +65,14 @@ const BtnCardReveal = (props) => {
         }
     }
 
-    const btnArr = btnValues.map( v =>  
-        <li key = {v}> <input type = 'button' value = {v} onClick = { () =>   btnSetter(v) }/>  </li>
+    const btnArr = btnValues.map( (v,i) =>  
+        <li key = { i } data-id = {props.jobId}> <input type = 'button' value = {v} onClick = { () =>   btnSetter(v,props.jobId) }/>  </li>
     );
+
+
     return (
         <div className = 'container'>
-            <div className="card" style = {{ height: cardHeight }}>
+            <div className="card" data-id = { props.jobId } style = {{ height: cardHeight }}>
                 <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4" onClick = { () => setCardHeight('300px') } > { props.title } <i className="material-icons right" >more_vert</i></span>
                 </div>

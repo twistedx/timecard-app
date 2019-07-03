@@ -14,14 +14,14 @@ const TcList = props => {
           </span>
           <p>
             {/* optional */}
-            <a href="#">Edit Timecard</a>
+            {/* <a href="#">Edit Timecard</a> */}
           </p>
         </div>
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4" onClick = { () => setCardHeight() }>
             Timecard<i class="material-icons right">close</i>
           </span>
-          <p>
+          {/* <p>
             <div>
               <span className="title">Job Description: </span>
               {props.description}
@@ -34,7 +34,7 @@ const TcList = props => {
               <span className="title">Job Type: </span>
               {props.type}
             </div>
-          </p>
+          </p> */}
           <Container>
             <Row>
               <Col><span class="badge">1212</span>Clock In:</Col>
