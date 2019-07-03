@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react'
-import Navbar from '../../Layout/Navbar/Navbar.js';
 import UserDashboardCard from '../UserDashboardCard/UserDashboardCard.js';
 import BtnCardReveal from '../../BtnList/BtnCardReveal';
 import { useHttp } from '../../Hooks/Fetch';
@@ -12,6 +11,8 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         authContext.loadUser();
+        authContext.setAppName("Dashboard");
+        // eslint-disable-next-line
     }, [])
 
 
@@ -28,13 +29,13 @@ const Dashboard = (props) => {
     
     `)
 
-    
+
     const loading = 'loading . . .';
     const [profile, setProfile] = useState(loading)
-    const profileLoadingChecker = ( obj )  => { obj ? setProfile(obj) : setProfile(loading) };
+    const profileLoadingChecker = (obj) => { obj ? setProfile(obj) : setProfile(loading) };
 
     const [jobs, setJobs] = useState(loading)
-    const jobsLoadingChecker = ( arr )  => { arr[0] ? setJobs(arr) : setJobs(loading) };
+    const jobsLoadingChecker = (arr) => { arr[0] ? setJobs(arr) : setJobs(loading) };
 
     const token = authContext.token;
     let h = {
@@ -44,39 +45,39 @@ const Dashboard = (props) => {
     h['x-auth-token'] = token;
 
     //fetch user profile =============================================================================================
-        let fetchedProfile = useHttp('http://localhost:5000/api/user', 'GET', '', h, []);
-        const p = fetchedProfile[1];
+    let fetchedProfile = useHttp('http://localhost:5000/api/user', 'GET', '', h, []);
+    const p = fetchedProfile[1];
 
-        useEffect( () => profileLoadingChecker(p[0]), [p[0]] );
-        
-        const profileloading = fetchedProfile[0];
+    useEffect(() => profileLoadingChecker(p[0]), [p[0]]);
+
+    const profileloading = fetchedProfile[0];
 
 
-        if(profile){
-            console.log(`
+    if (profile) {
+        console.log(`
         
             this is fetchedprofile
             ${profile.name}
             
             `);
-        }
+    }
 
-        
-        
+
+
     //fetch Job Profile ==============================================================================================
-        let fetchedJobs = useHttp('http://localhost:5000/api/job', 'GET', '', h, []);
-        const jobloading = fetchedJobs[0];
-        const j = fetchedJobs[1];
+    let fetchedJobs = useHttp('http://localhost:5000/api/job', 'GET', '', h, []);
+    const jobloading = fetchedJobs[0];
+    const j = fetchedJobs[1];
 
-        useEffect( () => jobsLoadingChecker(j), [j] );
+    useEffect(() => jobsLoadingChecker(j), [j]);
 
-        console.log(`
+    console.log(`
         
         this is jobprofile
         ${j}
         
         `);
-        
+
 
 
     // load dom ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -84,27 +85,24 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            
-            <header>
-                <Navbar title="Dashboard"></Navbar>
-            </header>
+
             <main>
                 <body>
-                    <UserDashboardCard 
-                        name= { profile === loading ? profile : profile.name }
-                        email= { profile === loading ? profile : profile.email }
-                        jobTitle= { profile === loading ? profile : profile.date }
+                    <UserDashboardCard
+                        name={profile === loading ? profile : profile.name}
+                        email={profile === loading ? profile : profile.email}
+                        jobTitle={profile === loading ? profile : profile.date}
                     />
 
-                    { jobs === loading ? jobs : jobs.map( (v, i) => {
+                    {jobs === loading ? jobs : jobs.map((v, i) => {
                         return <BtnCardReveal
-                        key = { i }
-                        title = { v.name }
-                        description = { v.description }
-                        role = { v.role }
-                        type = { v.jobType }
+                            key={i}
+                            title={v.name}
+                            description={v.description}
+                            role={v.role}
+                            type={v.jobType}
                         />
-                        }) 
+                    })
                     }
                 </body>
             </main>
