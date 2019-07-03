@@ -2,10 +2,12 @@ import React from 'react';
 import TcTitle from './TcTitle';
 import CreateNewBtn from './CreateNewBtn';
 import TcList from './TcList';
+import Navbar from '../Layout/Navbar/Navbar.js';
 
 const TimecardPage = () => {
   return [
     <div>
+      <Navbar title="Timecards" />
       <main>
         <body>
           <TcTitle />

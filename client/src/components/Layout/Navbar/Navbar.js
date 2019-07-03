@@ -5,7 +5,7 @@ const Navbar = (props) => {
     return (
 
 
-        <nav className="nav-wrapper blue lighten-1">
+        <nav className="nav-wrapper blue lighten-1 Nav">
             <a href="#!" className="brand-logo center">{props.title}</a>
         </nav>
 
