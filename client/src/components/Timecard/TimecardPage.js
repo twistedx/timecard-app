@@ -7,7 +7,6 @@ import Navbar from '../Layout/Navbar/Navbar.js';
 const TimecardPage = () => {
   return [
     <div>
-      <Navbar title="Timecards" />
       <main>
         <body>
           <TcTitle />
