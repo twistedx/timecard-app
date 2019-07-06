@@ -1,16 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { Container, Row, Col } from 'reactstrap';
+const moment = require('moment');
+
 
 const TcList = props => {
   const [cardHeight, setCardHeight] = useState();
+  
+  const moTime = t  => t === '' ? '' : moment(t).format('LTS');
+  const title = moment(props.date).format('LL');
+
+
+  console.log(`=====================================
+  
+  
+  
+  ${title}
+  
+  
+  
+  
+  ===========================================`)
+
+
 
 
   return (
     <div className="container">
+      
       <div className="card" style = {{ height: cardHeight, display: 'grid'}}>
         <div className="card-content">
           <span className="card-title activator grey-text text-darken-4" onClick = { () => setCardHeight('300px') } >
-            Timecard<i class="material-icons right">more_vert</i>
+            {title}<i className="material-icons right">more_vert</i>
           </span>
           <p>
             {/* optional */}
@@ -19,7 +39,7 @@ const TcList = props => {
         </div>
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4" onClick = { () => setCardHeight() }>
-            Timecard<i class="material-icons right">close</i>
+            {title}<i className="material-icons right">close</i>
           </span>
           {/* <p>
             <div>
@@ -37,14 +57,19 @@ const TcList = props => {
           </p> */}
           <Container>
             <Row>
-              <Col><span class="badge">1212</span>Clock In:</Col>
-              <Col><span class="badge">1133</span>Break Out:</Col>
-              <Col><span class="badge">1132</span>Break In:</Col>
+              <h6>Timecard Number: {props.tcId}</h6>
             </Row>
             <Row>
-              <Col><span class="badge">1232</span>Lunch Out:</Col>
-              <Col><span class="badge">2321</span>Lunch In:</Col>
-              <Col><span class="badge">2321</span>Clock Out:</Col>
+              <Col>Clock In:<span className="badge">{moTime(props.clockIn)}</span></Col>
+              <Col>Clock Out:<span className="badge">{moTime(props.clockOut)}</span></Col>
+            </Row>
+            <Row>
+              <Col>Lunch In:<span className="badge">{moTime(props.lunchIn)}</span></Col>
+              <Col>Lunch Out:<span className="badge">{moTime(props.lunchOut)}</span></Col>
+            </Row>
+            <Row>
+              <Col>Break In:<span className="badge">{moTime(props.breakIn)}</span></Col>
+              <Col>Break Out:<span className="badge">{moTime(props.breakOut)}</span></Col>
             </Row>
           </Container>
         </div>
