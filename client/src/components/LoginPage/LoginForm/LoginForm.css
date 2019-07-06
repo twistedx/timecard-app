@@ -1,13 +1,13 @@
-#ForgotPassword {
-    margin-right: 10px;
+#flatBtn {
+    color: rgb(0, 136, 255);
 }
 
-#CreateAccount {
-    margin: 10px;
+#flatBtn:hover {
+    background: rgb(235, 246, 252);
 }
 
 #LoginBtn {
-    margin-top: 10px;
+    margin: 10px;
 }
 
 #ForgotPassword:hover {
@@ -16,4 +16,7 @@
 
 #CreateAccount:hover {
     text-decoration: underline;
+}
+.loginHeader {
+    font-family: 'IBM Plex Sans', sans-serif;
 }

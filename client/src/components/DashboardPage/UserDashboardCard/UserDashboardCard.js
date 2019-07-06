@@ -12,9 +12,6 @@ const UserDashboardCard = props => {
                                     <li>Email: {props.email}</li>
                                     <li>Title: {props.jobTitle}</li>
                                 </ul>
-                            <div className="card-action">
-                                {/* <a className="blue-text" href="#">Edit Profile</a> */}
-                            </div>
                         </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import './LoginForm.css';
 import AuthContext from '../../../context/auth/AuthContext';
 import { Link, withRouter } from 'react-router-dom';
 import setAuthToken from '../../../utils/setAuthToken';
@@ -34,12 +35,16 @@ const LoginForm = props => {
 
     };
 
+
+
     return (
 
         <div className='form-container'>
-            <h1>
-                Account <span className='text-primary'>Login</span>
-            </h1>
+
+            <style>
+                @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap');
+            </style>
+
             <form onSubmit={onSubmit}>
                 <div className='form-group'>
                     <label htmlFor='email'>Email Address</label>
@@ -61,14 +66,19 @@ const LoginForm = props => {
                         required
                     />
                 </div>
+                <div className="center-align">
                 <input
                     type='submit'
                     value='Login'
-                    className='btn btn-primary btn-block blue lighten-1'
+                    className='btn blue lighten-1'
+                    id="LoginBtn"
                 />
+                </div>
             </form>
             <div className="center">
-                <Link id="ForgotPassword" to="/forgotmypassword">Forgot My Password  </Link> | <Link id="CreateAccount" to="/register">  Create Account</Link>
+                <Link className="btn-flat" id="flatBtn" to="/forgotmypassword">Forgot My Password</Link>
+                <br />
+                <Link className="btn-flat" id="flatBtn" to="/register">Create Account</Link>
             </div>
         </div>
 
