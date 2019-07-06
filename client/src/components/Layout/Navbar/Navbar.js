@@ -15,7 +15,7 @@ const Navbar = (props) => {
     useEffect(() => {
         M.AutoInit();
         //eslint-disable-next-line
-      }, []);
+    }, []);
 
     const onLogout = () => {
         logout();
@@ -23,10 +23,10 @@ const Navbar = (props) => {
 
     return (
 
-        <div>
+        <Fragment>
 
             <style>
-            @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap');
+                @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap');
             </style>
 
             <nav className="nav-wrapper blue lighten-1 Nav">

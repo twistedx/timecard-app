@@ -2,7 +2,6 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import AuthContext from '../../../context/auth/AuthContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
-import React, { Fragment } from 'react';
 import './DropdownMenu.css';
 
 const DropdownMenu = props => {
@@ -13,7 +12,7 @@ const DropdownMenu = props => {
     useEffect(() => {
         M.AutoInit();
         //eslint-disable-next-line
-      }, []);
+    }, []);
 
     const onLogout = () => {
         logout();
@@ -52,7 +51,7 @@ const DropdownMenu = props => {
         <div>
 
             <style>
-            @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+                @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
             </style>
 
             <ul id="dropdown1" class="dropdown-content">
@@ -63,6 +62,7 @@ const DropdownMenu = props => {
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">menu</i></a></li>
                 </ul>
             </div>
+        </div>
 
     )
 }
