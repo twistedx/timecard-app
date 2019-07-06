@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './DropdownMenu.css';
 
 const DropdownMenu = props => {
     return (
-        <div>
+        <Fragment>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
 
             <ul className="sidenav" id="mobile-demo">
@@ -13,7 +13,7 @@ const DropdownMenu = props => {
                 <li><a href="#">Logout</a></li>
             </ul>
 
-        </div>
+        </Fragment>
     )
 }
 
