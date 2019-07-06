@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../../context/auth/AuthContext';
 import PropTypes from 'prop-types';
 import './Navbar.css';
-import Register from '../../Register/Register';
-import LoginForm from '../../LoginPage/LoginForm/LoginForm';
+
 
 const Navbar = (props) => {
     const authContext = useContext(AuthContext);
-    const { isAuthenticated, logout, user, appName } = authContext;
+    const { isAuthenticated, logout, user } = authContext;
 
     const onLogout = () => {
         logout();
@@ -16,7 +15,7 @@ const Navbar = (props) => {
 
     const authLinks = (
         <div className="right">
-            <li>Hello {user && user.name}</li>
+            <li className="tom">Hello {user && user.name}</li>
             <li>
                 <a onClick={onLogout} href='#!'>
                     <span>Logout</span>
@@ -38,17 +37,18 @@ const Navbar = (props) => {
         </Fragment>
     );
 
-
-
-
-
     return (
-
-        <nav className="nav-wrapper blue lighten-1">
-            <a href="#!" className="brand-logo center"> {isAuthenticated ? "Dashboard" : props.appName} </a>
-            <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
-        </nav>
-
+        <div>
+            <nav className="nav-wrapper blue lighten-1 ">
+                <div></div>
+                <div>
+                    <a href="#!" className="brand-logo center"> {isAuthenticated ? "Dashboard" : props.appName} </a>
+                </div>
+                <div>
+                    <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
+                </div>
+            </nav>
+        </div>
 
     )
 }
