@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../../context/auth/AuthContext';
 import PropTypes from 'prop-types';
 import './Navbar.css';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 
 const Navbar = (props) => {
@@ -38,17 +39,17 @@ const Navbar = (props) => {
     );
 
     return (
-        <div>
+        <Fragment>
             <nav className="nav-wrapper blue lighten-1 ">
                 <div></div>
                 <div>
                     <a href="#!" className="brand-logo center"> {isAuthenticated ? "Dashboard" : props.appName} </a>
                 </div>
                 <div>
-                    <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
+                    {isAuthenticated ? <DropdownMenu /> : guestLinks}
                 </div>
             </nav>
-        </div>
+        </Fragment>
 
     )
 }
