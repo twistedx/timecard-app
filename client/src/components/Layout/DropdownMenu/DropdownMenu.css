@@ -1,0 +1,10 @@
+.dropdown-content li>a, .dropdown-content li>span {
+    color: black!important;
+    margin-right: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.dropdown-content:hover li>a:hover, .dropdown-content:hover li>span:hover {
+    background-color: white!important;
+    color: #0091ff!important;
+}

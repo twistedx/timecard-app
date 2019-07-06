@@ -49,7 +49,7 @@ router.post('/:job', auth, async (req, res) => {
     console.log("timecard active");
     const { date, clockIn } = req.body; //job comes from frontend -- needs to be implimented
     const job = req.params.job;
-  
+
     try {
         const newTimecard = new Timecard({
             job, date, clockIn
@@ -68,7 +68,7 @@ router.post('/:job', auth, async (req, res) => {
 //@description  Update Timecard
 //@access       Private
 
-router.put('/:jid/:tcid', auth, async (req, res) => {
+router.put('/:tcid', auth, async (req, res) => {
     const { clockIn, clockOut, lunchIn, lunchOut, breakIn, breakOut } = req.body;
     const tcid = req.params.tcid;
     const jid = req.params.jid;
@@ -79,7 +79,7 @@ router.put('/:jid/:tcid', auth, async (req, res) => {
     tcid = ${tcid}
     jid = ${jid}
     id = ${id}`);
-    
+
 
 
     //build a Timecard object
@@ -93,14 +93,14 @@ router.put('/:jid/:tcid', auth, async (req, res) => {
     if (breakOut) TimecardFields.breakOut = breakOut;
 
     try {
-        let tc = await Timecard.findById({_id: tcid});
+        let tc = await Timecard.findById({ _id: tcid });
 
         console.log(`the return from timecard.findbyid(id) ${tc}`);
 
         if (!tc) return res.status(404).json({ msg: 'Timecard not found' });
 
         let newtc = await Timecard.findOneAndUpdate({ job: jid, _id: tcid }, TimecardFields, { new: true });
-            res.json(newtc);
+        res.json(newtc);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')

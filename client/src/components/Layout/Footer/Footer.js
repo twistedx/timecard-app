@@ -1,6 +1,13 @@
-import React from 'react'
+import React from 'react';
+import quotes from './quotes';
 
 const Footer = () => {
+
+    const selectRandom = () => {
+        var random = Math.floor(Math.random() * quotes.length);
+        return quotes[random];
+    }
+
     return (
 
         <div>
@@ -8,7 +15,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col l12 m12 s12 center">
-                            <h5 className="white-text">Footer</h5>
+                            <h6 className="white-text">{selectRandom()}</h6>
                         </div>
                     </div>
                 </div>
