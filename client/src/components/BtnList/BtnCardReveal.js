@@ -91,7 +91,7 @@ const BtnCardReveal = (props) => {
                         { props.type }
                     </div>
                     <ul>
-                        <li> <input type = 'button' value = 'All Timecards' /> </li>
+                        <li> <input type = 'button' value = 'All Timecards' onClick = {() => window.location = "/timecards/"+props.jobId} /> </li>
                         {btnArr}
                     </ul>
                     <div>

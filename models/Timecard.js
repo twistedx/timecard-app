@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const TimecardSchema = mongoose.Schema({
 
@@ -6,27 +7,27 @@ const TimecardSchema = mongoose.Schema({
         type: String
     },
     date: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: moment().utc().format()
     },
     clockIn: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: moment().utc().format()
     },
     clockOut: {
-        type: Date
+        type: String
     },
     breakIn: {
-        type: Date
+        type: String
     },
     breakOut: {
-        type: Date
+        type: String
     },
     lunchIn: {
-        type: Date
+        type: String
     },
     lunchOut: {
-        type: Date
+        type: String
     },
     comments: {
         type: String

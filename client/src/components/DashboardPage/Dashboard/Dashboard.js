@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserDashboardCard from '../UserDashboardCard/UserDashboardCard.js';
 import BtnCardReveal from '../../BtnList/BtnCardReveal';
-import Modal from '../../Modal/JobModal'
+import JobModal from '../../Modal/JobModal'
 import { useHttp } from '../../Hooks/Fetch';
 import AuthContext from '../../../context/auth/AuthContext';
 import setAuthToken from '../../../utils/setAuthToken';
@@ -89,7 +89,7 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <Modal token = {token}/>
+            <JobModal token = {token}/>
             <main>
                 <body>
                     <UserDashboardCard

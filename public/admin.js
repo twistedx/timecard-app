@@ -8,7 +8,8 @@ let token;
 
 // login=============================================================================================
 login = () => {
-    let logval = document.getElementById('log').value;
+    // let logval = document.getElementById('log').value;
+    let logval = '{ "email": "jsnow@gmail.com", "password": "123456"}'
     // console.log(logval);
 
     fetch('/api/auth', {
