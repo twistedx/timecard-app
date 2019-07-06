@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import AuthContext from '../../../context/auth/AuthContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
 import './DropdownMenu.css';
 
 const DropdownMenu = props => {
@@ -47,6 +48,7 @@ const DropdownMenu = props => {
     );
 
     return (
+
         <div>
 
             <style>
@@ -62,7 +64,6 @@ const DropdownMenu = props => {
                 </ul>
             </div>
 
-        </div>
     )
 }
 

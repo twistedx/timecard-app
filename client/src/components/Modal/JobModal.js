@@ -100,7 +100,7 @@ const JobModal = props => {
               <label htmlFor="role">Role</label>
             </div>
 
-            <div className="input-field">
+            <div className="form-group">
               <select name='jobType' value={jobType} onChange={onChange}>
                 <option value="" disabled selected >
                   Job Type:
