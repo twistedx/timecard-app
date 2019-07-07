@@ -29,7 +29,7 @@ const Navbar = (props) => {
                 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap');
             </style>
 
-            <nav className="nav-wrapper blue lighten-1 Nav">
+            <nav className="nav-wrapper Nav">
 
                 <div></div>
                 <div>
@@ -45,13 +45,14 @@ const Navbar = (props) => {
 
     )
 }
+
 Navbar.propTypes = {
     appName: PropTypes.string.isRequired
 
 };
 
 Navbar.defaultProps = {
-    appName: 'TimeCardApp'
+    appName: 'Time'
 };
 
 export default Navbar;

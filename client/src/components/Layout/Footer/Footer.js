@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.css';
 import quotes from './quotes';
 
 const Footer = () => {
@@ -11,15 +12,15 @@ const Footer = () => {
     return (
 
         <div>
-            <footer className="page-footer blue lighten-1">
+            <footer className="page-footer" id="quoteFooter">
                 <div className="container">
                     <div className="row">
                         <div className="col l12 m12 s12 center">
-                            <h6 className="white-text">{selectRandom()}</h6>
+                            <h6>{selectRandom()}</h6>
                         </div>
                     </div>
                 </div>
-                <div className="footer-copyright">
+                <div className="footer-copyright" id="copyrightFooter">
                     <div className="container center">
                         © 2019 Copyright
                     </div>

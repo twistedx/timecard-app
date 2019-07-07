@@ -28,7 +28,7 @@ const App = () => {
   return (
     <AuthState>
       <Router>
-        <Navbar title="Timecard App" />
+        <Navbar title="Time" />
         <body>
           <Switch>
             <Route exact path='/' component={Dashboard} key={Dashboard.name} />
