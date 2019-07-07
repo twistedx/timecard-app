@@ -1,13 +1,18 @@
 #flatBtn {
-    color: rgb(0, 136, 255);
+    color: rgb(73, 71, 222);
 }
 
 #flatBtn:hover {
-    background: rgb(235, 246, 252);
+    background: rgb(202, 215, 255);
 }
 
 #LoginBtn {
     margin: 10px;
+    background:rgb(73, 71, 222);
+}
+
+#LoginBtn:hover {
+    background: rgb(202, 215, 255);
 }
 
 #ForgotPassword:hover {

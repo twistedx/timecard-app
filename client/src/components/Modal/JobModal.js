@@ -73,12 +73,12 @@ const JobModal = props => {
 
   return (
     <Fragment>
-      <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light blue">
+      <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light transparent">
         <i className="material-icons">add</i>
       </button>
 
       <div id='modal' className='center valign-wrapper'>
-        <button id='close' onClick={() => ajCheck()} className="btn-floating btn-small waves-effect waves-light blue">
+        <button id='close' onClick={() => ajCheck()} className="btn-floating btn-small waves-effect waves-light">
           <i className="material-icons center valign-wrapper">close</i>
         </button>
 
@@ -117,7 +117,7 @@ const JobModal = props => {
             </div>
 
             <div>
-              <button type='submit' value='submit' className="btn-floating btn-small waves-effect waves-light blue">
+              <button type='submit' value='submit' id="newJobSubmit" className="btn-floating btn-small waves-effect waves-light">
                 <i className="material-icons center valign-wrapper">send</i>
               </button>
             </div>
