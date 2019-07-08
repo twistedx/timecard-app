@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import './JobModal.css';
+import SelectMenu from './SelectMenu/SelectMenu'
 import { useHttp } from '../Hooks/Fetch';
 
 const JobModal = props => {
@@ -68,7 +69,7 @@ const JobModal = props => {
 
 
 
-  
+
 
 
   return (
@@ -88,35 +89,17 @@ const JobModal = props => {
 
         <div className="container">
           <div id='title'> Add a New Job </div>
-
-
           <form onSubmit={onSubmit}>
-
             <div className="form-group">
               <input id="company" type="text" name='name' placeholder="job name" required value={name} onChange={onChange} />
-              <label htmlFor="company">Company</label>
             </div>
-
             <div className="form-group">
               <input id="role" type="text" name='role' placeholder="role" required value={role} onChange={onChange} />
-              <label htmlFor="role">Role</label>
             </div>
-
-            <div className="form-group">
-              <select name='jobType' value={jobType} onChange={onChange} style = {{display: 'block'}}>
-                <option value="job" disabled />
-                <option value="hourly">Hourly Rate</option>
-                <option value="salary">Salary/Day Rate</option>
-                <option value="fixed">Fixed Project Rate</option>
-              </select>
-            </div>
-              <label htmlFor="select-job-type">Select Job Type</label>
-
+            <SelectMenu />
             <div className="form-group">
               <input id="description" type="text" name='description' placeholder="description" required value={description} onChange={onChange} />
-              <label htmlFor="description">Description</label>
             </div>
-
             <div>
               <button type='submit' value='submit' id="newJobSubmit" className="btn-floating btn-small waves-effect waves-light">
                 <i className="material-icons center valign-wrapper">send</i>

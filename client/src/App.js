@@ -38,7 +38,6 @@ const App = ({match}) => {
             <Route exact path='/timecards/:id' component={TimecardPage} key={TimecardPage.name} />
             <Route exact path='/edituser' component={EditUser} key={EditUser.name} />
           </Switch>
-        </body>
         <Footer />
       </Router>
     </AuthState>
