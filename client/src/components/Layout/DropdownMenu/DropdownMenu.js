@@ -46,10 +46,10 @@ const DropdownMenu = props => {
         </Fragment>
     );
 
+
     return (
 
         <div>
-
             <style>
                 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
             </style>
@@ -57,7 +57,7 @@ const DropdownMenu = props => {
             <ul id="dropdown1" class="dropdown-content">
                 {isAuthenticated ? authLinks : guestLinks}
             </ul>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper" style = {{ display: props.visible ? 'block' : 'none' }}>
                 <ul class="right">
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">menu</i></a></li>
                 </ul>
