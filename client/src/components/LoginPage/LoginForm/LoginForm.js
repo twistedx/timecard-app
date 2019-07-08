@@ -70,7 +70,7 @@ const LoginForm = props => {
                 <input
                     type='submit'
                     value='Login'
-                    className='btn blue lighten-1'
+                    className='btn'
                     id="LoginBtn"
                 />
                 </div>

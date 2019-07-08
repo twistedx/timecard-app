@@ -6,5 +6,5 @@
 
 .dropdown-content:hover li>a:hover, .dropdown-content:hover li>span:hover {
     background-color: white!important;
-    color: #0091ff!important;
+    color: rgb(73, 71, 222)!important;
 }

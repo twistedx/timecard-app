@@ -6,30 +6,32 @@
     height: 45px;
 }
 #modal {
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    display: none;
-    z-index: 100;
-    min-height: 300px;
-    width: 500px;
-    border: 3px #42A5F5 solid;
-    border-radius: 8px;
-    top: calc(50% - 150px);
-    left: calc(50% - 250px);
-    box-shadow: 2px 2px 5px;
-    padding: 15px;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  display: none;
+  z-index: 100;
+  min-height: 300px;
+  width: 500px;
+  border: 1px rgb(73, 71, 222) solid;
+  border-radius: 8px;
+  top: calc(50% - 150px);
+  left: calc(50% - 250px);
+  box-shadow: 2px 2px 5px;
+  padding: 15px;
 }
-#modal input {
-    font-size: 12px;
-    height: 20px;
-}
+
 #close {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    width: 30px;
-    height: 30px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 30px;
+  height: 30px;
+  background: rgb(73, 71, 222);
 }
 form button {
-    margin-top: 15px;
+  margin-top: 15px;
+}
+
+#newJobSubmit {
+  background: rgb(73, 71, 222);
 }
