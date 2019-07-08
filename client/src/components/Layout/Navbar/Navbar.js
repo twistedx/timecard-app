@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import DropDownMenu from '../../Layout/DropdownMenu/DropdownMenu.js';
 import './Navbar.css';
-import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import HomeBtn from '../HomeBtn/HomeBtn';
 
 
 const Navbar = (props) => {
@@ -31,13 +31,12 @@ const Navbar = (props) => {
 
             <nav className="nav-wrapper blue lighten-1 Nav">
 
-                <div></div>
                 <div>
-                    <a href="#!" className="brand-logo center" id="navTitle"> {isAuthenticated ? "Dashboard" : props.appName} </a>
+                    <a href="#!" className="brand-logo center" id="navTitle"> {isAuthenticated ? props.title : props.appName} </a>
                 </div>
                 <div>
-
-                    <DropDownMenu />
+                    <DropDownMenu visible = { props.dropdown ? true : false }/>
+                    <HomeBtn visible = { props.home ? true : false } />
 
                 </div>
             </nav>

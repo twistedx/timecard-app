@@ -1,6 +1,9 @@
 .Nav {
         box-shadow: none!important;
 }
+nav {
+        margin-bottom: 20px;
+}
 
 #navTitle {
         font-family: 'IBM Plex Sans', sans-serif;
