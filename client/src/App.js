@@ -26,22 +26,22 @@ const App = () => {
   }, []);
 
   return (
+
     <AuthState>
       <Router>
         <Navbar title="Time" />
-        <body>
-          <Switch>
-            <Route exact path='/' component={Dashboard} key={Dashboard.name} />
-            <Route exact path='/about' component={About} key={About.name} />
-            <Route exact path='/register' component={Register} key={Register.name} />
-            <Route exact path='/login' component={LoginPage} key={LoginPage.name} />
-            <Route exact path='/timecards/:id' component={TimecardPage} key={TimecardPage.name} />
-            <Route exact path='/edituser' component={EditUser} key={EditUser.name} />
-          </Switch>
-        </body>
+        <Switch>
+          <Route exact path='/' component={Dashboard} key={Dashboard.name} />
+          <Route exact path='/about' component={About} key={About.name} />
+          <Route exact path='/register' component={Register} key={Register.name} />
+          <Route exact path='/login' component={LoginPage} key={LoginPage.name} />
+          <Route exact path='/timecards/:id' component={TimecardPage} key={TimecardPage.name} />
+          <Route exact path='/edituser' component={EditUser} key={EditUser.name} />
+        </Switch>
         <Footer />
       </Router>
     </AuthState>
+
   )
 }
 
