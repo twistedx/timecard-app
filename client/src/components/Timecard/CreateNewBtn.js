@@ -40,7 +40,7 @@ const CreateNewBtn = (props) => {
     <div className="container">
       <div className="row" id = 'margin-top'>
         <div className="col s12 m12 l12 center">
-          <button className="btn-floating btn-large waves-effect waves-light blue" onClick = {() => newTc()}><i className="material-icons">add_alarm</i></button>
+          <button className="btn-floating btn-large waves-effect waves-light blue hoverable" onClick = {() => newTc()}><i className="material-icons">add_alarm</i></button>
         </div>
       </div>
     </div>
