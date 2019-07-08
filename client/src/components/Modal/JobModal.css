@@ -12,7 +12,7 @@
     z-index: 100;
     min-height: 300px;
     width: 500px;
-    border: 3px #42A5F5 solid;
+    border: 1px rgb(73, 71, 222) solid;
     border-radius: 8px;
     top: calc(50% - 150px);
     left: calc(50% - 250px);
@@ -29,7 +29,12 @@
     top: 5px;
     width: 30px;
     height: 30px;
+    background: rgb(73, 71, 222);
 }
 form button {
     margin-top: 15px;
+}
+
+#newJobSubmit {
+    background: rgb(73, 71, 222);
 }
