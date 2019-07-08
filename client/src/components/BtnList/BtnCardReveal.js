@@ -3,6 +3,7 @@ import './BtnCardReveal.css';
 import { useHttp } from '../Hooks/Fetch';
 import AuthContext from '../../context/auth/AuthContext';
 import setAuthToken from '../../utils/setAuthToken';
+import ClockingBtns from './ClockingBtns';
 import axios from 'axios';
 
 
@@ -111,7 +112,7 @@ const BtnCardReveal = (props) => {
                     </div>
                     <ul>
                         <li> <input type = 'button' value = 'All Timecards' onClick = {() => window.location = "/timecards/"+props.jobId} /> </li>
-                        {btnArr}
+                        <ClockingBtns token = {token} />
                     </ul>
                     <div>
                         you've clocked in at blah o clock

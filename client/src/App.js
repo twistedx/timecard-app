@@ -17,8 +17,7 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
-const App = ({match}) => {
-  const [pageName, setPageName] = useState('Timecard App');
+const App = () => {
 
   useEffect(() => {
     M.AutoInit();
