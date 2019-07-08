@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import './JobModal.css';
-import SelectMenu from './SelectMenu/SelectMenu'
 import { useHttp } from '../Hooks/Fetch';
 
 const JobModal = props => {
@@ -27,7 +26,7 @@ const JobModal = props => {
   const [newJob, setNewJob] = useState({
     name: '',
     role: '',
-    jobType: 'jobType',
+    jobType: '',
     description: ''
   });
 
@@ -75,7 +74,7 @@ const JobModal = props => {
   return (
     <Fragment>
       <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light blue hoverable">
-      <div className = 'valign-wrapper center'  style = {{ height: '37px', width: '45px'}}><i className="material-icons" >add</i></div>
+        <div className='valign-wrapper center' style={{ height: '37px', width: '45px' }}><i className="material-icons" >add</i></div>
 
       </button>
 
@@ -96,7 +95,14 @@ const JobModal = props => {
             <div className="form-group">
               <input id="role" type="text" name='role' placeholder="role" required value={role} onChange={onChange} />
             </div>
-            <SelectMenu />
+            <div className="form-group">
+              <select className="browser-default" name='jobType' value={jobType} onChange={onChange}>
+                <option value="job" disabled />
+                <option value="hourly">Hourly Rate</option>
+                <option value="salary">Salary/Day Rate</option>
+                <option value="fixed">Fixed Project Rate</option>
+              </select>
+            </div>
             <div className="form-group">
               <input id="description" type="text" name='description' placeholder="description" required value={description} onChange={onChange} />
             </div>
