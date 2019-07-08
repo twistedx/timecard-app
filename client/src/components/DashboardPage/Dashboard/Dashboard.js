@@ -6,6 +6,7 @@ import { useHttp } from '../../Hooks/Fetch';
 import AuthContext from '../../../context/auth/AuthContext';
 import setAuthToken from '../../../utils/setAuthToken';
 import loadingImg from '../../../img/loading.gif';
+import Navbar from '../../Layout/Navbar/Navbar';
 import { inherits } from 'util';
 
 const Dashboard = (props) => {
@@ -89,7 +90,8 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <JobModal token={token} />
+            <Navbar title="Dashboard" dropdown = { true } home = { false } />
+            <JobModal token = {token}/>
             <main>
                 <UserDashboardCard
                     name={profile === loading ? profile : profile.name}

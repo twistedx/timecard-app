@@ -2,6 +2,9 @@
         box-shadow: none!important;
         background-image: linear-gradient(to right, rgb(160, 151, 250), rgb(73, 71, 222), rgb(76, 111, 248), rgb(139, 178, 252))
 }
+nav {
+        margin-bottom: 20px;
+}
 
 #navTitle {
         font-family: 'IBM Plex Sans', sans-serif;

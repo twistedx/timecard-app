@@ -8,7 +8,7 @@ const TimecardSchema = mongoose.Schema({
     },
     date: {
         type: String,
-        default: moment().utc().format()
+        default: moment().utc().format('LL')
     },
     clockIn: {
         type: String,

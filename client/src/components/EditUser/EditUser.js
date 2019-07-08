@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/AuthContext';
 import setAuthToken from '../../utils/setAuthToken';
+import Navbar from '../Layout/Navbar/Navbar';
 const EditUser = props => {
 
     const authContext = useContext(AuthContext);
@@ -72,6 +73,8 @@ const EditUser = props => {
     }
 
     return (
+        <Fragment>
+            <Navbar title="Edit Profile" dropdown = { false } home = { true } />
         < div className="container" >
             <div className='form-container'>
                 <form onSubmit={onSubmit}>
@@ -135,6 +138,7 @@ const EditUser = props => {
                 </form>
             </div>
         </div >
+        </Fragment>
     );
 };
 
