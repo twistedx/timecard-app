@@ -3,9 +3,6 @@ import './BtnCardReveal.css';
 import { useHttp } from '../Hooks/Fetch';
 import AuthContext from '../../context/auth/AuthContext';
 import setAuthToken from '../../utils/setAuthToken';
-import axios from 'axios';
-
-
 
 const BtnCardReveal = (props) => {
     //set auth=========================================================================
@@ -69,7 +66,6 @@ const BtnCardReveal = (props) => {
         }
     }
 
-
     const clockIn = async (time, jid) => {
         const config = {
             headers: {
@@ -87,7 +83,6 @@ const BtnCardReveal = (props) => {
     const btnArr = btnValues.map((v, i) =>
         <li key={i} data-id={props.jobId}> <input type='button' value={v} onClick={() => btnSetter(v, props.jobId)} />  </li>
     );
-
 
     return (
         <div className='container'>
@@ -120,8 +115,6 @@ const BtnCardReveal = (props) => {
             </div>
         </div>
     );
-
-
 }
 
 export default BtnCardReveal;

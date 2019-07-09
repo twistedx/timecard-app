@@ -11,6 +11,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import Footer from './components/Layout/Footer/Footer';
 import EditUser from './components/EditUser/EditUser';
+import EditJob from './components/EditJob/EditJob'
 import './App.css';
 
 if (localStorage.token) {
@@ -36,6 +37,7 @@ const App = ({ match }) => {
           <Route exact path='/login' component={LoginPage} key={LoginPage.name} />
           <Route exact path='/timecards/:id' component={TimecardPage} key={TimecardPage.name} />
           <Route exact path='/edituser' component={EditUser} key={EditUser.name} />
+          <Route exact path='/editjob/:id' component={EditJob} key={EditJob.name} />
         </Switch>
         <Footer />
       </Router>

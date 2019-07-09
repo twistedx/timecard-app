@@ -46,7 +46,6 @@ const DropdownMenu = props => {
         </Fragment>
     );
 
-
     return (
 
         <div>
@@ -61,7 +60,6 @@ const DropdownMenu = props => {
             <div className="nav-wrapper" style={{ display: props.visible ? 'block' : 'none' }}>
                 <ul className="right">
                     <li><a className="dropdown-trigger" href="#!" data-target="dropdown1"><i className="material-icons right">menu</i></a></li>
-
                 </ul>
             </div>
         </div>

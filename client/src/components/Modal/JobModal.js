@@ -30,13 +30,9 @@ const JobModal = props => {
     description: ''
   });
 
-
   const { name, role, jobType, description } = newJob;
 
   const onChange = e => setNewJob({ ...newJob, [e.target.name]: e.target.value });
-
-
-
 
   const onSubmit = e => {
     e.preventDefault();
@@ -66,11 +62,6 @@ const JobModal = props => {
     window.location.reload();
   }
 
-
-
-
-
-
   return (
     <Fragment>
       <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light blue hoverable">
@@ -82,9 +73,6 @@ const JobModal = props => {
         <button id='close' onClick={() => ajCheck()} className="btn-floating btn-small waves-effect waves-light">
           <i className="material-icons center valign-wrapper">close</i>
         </button>
-
-
-
 
         <div className="container">
           <div id='title'> Add a New Job </div>
