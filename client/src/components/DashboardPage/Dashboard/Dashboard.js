@@ -90,8 +90,10 @@ const Dashboard = (props) => {
 
     return (
         <div>
+
             <Navbar title="Dashboard" dropdown = { true } home = { false } />
             <JobModal token = {token}/>
+
             <main>
                 <UserDashboardCard
                     name={profile === loading ? profile : profile.name}
@@ -108,6 +110,19 @@ const Dashboard = (props) => {
                         role={v.role}
                         type={v.jobType}
                     />
+
+                    {jobs === loading ? <img src={loadingImg} style={{ height: '200px', width: '200px', position: 'absolute', top: 'calc(50% - 100px', left: 'calc(50% - 100px' }} /> : jobs.map((v, i) => {
+                        return <BtnCardReveal
+                            key={i}
+                            jobId={v._id}
+                            title={v.name}
+                            description={v.description}
+                            role={v.role}
+                            type={v.jobType}
+                        />
+                    })
+                    }
+                </body>
                 })
                 }
             </main>
