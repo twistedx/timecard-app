@@ -6,6 +6,7 @@ import CreateNewBtn from './CreateNewBtn';
 import TcList from './TcList';
 import loadingImg from '../../img/loading.gif';
 import './TimecardPage.css';
+import Navbar from '../Layout/Navbar/Navbar';
 
 const TimecardPage = ( {match} ) => {
   const authContext = useContext(AuthContext);
@@ -76,6 +77,7 @@ const TimecardPage = ( {match} ) => {
 
   return [
     <div>
+      <Navbar title="Timecards" dropdown = { false } home = { true } />
       <main>
         <body>
           <CreateNewBtn jid = {jid} token = {token} h = {h}/>

@@ -6,6 +6,7 @@ import { useHttp } from '../../Hooks/Fetch';
 import AuthContext from '../../../context/auth/AuthContext';
 import setAuthToken from '../../../utils/setAuthToken';
 import loadingImg from '../../../img/loading.gif';
+import Navbar from '../../Layout/Navbar/Navbar';
 import { inherits } from 'util';
 
 const Dashboard = (props) => {
@@ -90,14 +91,26 @@ const Dashboard = (props) => {
     return (
         <div>
 
+            <Navbar title="Dashboard" dropdown = { true } home = { false } />
+            <JobModal token = {token}/>
+
             <main>
-                <body>
-                    <UserDashboardCard
-                        name={profile === loading ? profile : profile.name}
-                        email={profile === loading ? profile : profile.email}
-                        jobTitle={profile === loading ? profile : profile.title}
+                <UserDashboardCard
+                    name={profile === loading ? profile : profile.name}
+                    email={profile === loading ? profile : profile.email}
+                    jobTitle={profile === loading ? profile : profile.title}
+                />
+
+                {jobs === loading ? <img src={loadingImg} style={{ height: '200px', width: '200px', position: 'absolute', top: 'calc(50% - 100px', left: 'calc(50% - 100px' }} /> : jobs.map((v, i) => {
+                    return <BtnCardReveal
+                        key={i}
+                        jobId={v._id}
+                        title={v.name}
+                        description={v.description}
+                        role={v.role}
+                        type={v.jobType}
                     />
-                    <JobModal token={token} />
+
                     {jobs === loading ? <img src={loadingImg} style={{ height: '200px', width: '200px', position: 'absolute', top: 'calc(50% - 100px', left: 'calc(50% - 100px' }} /> : jobs.map((v, i) => {
                         return <BtnCardReveal
                             key={i}
@@ -110,6 +123,8 @@ const Dashboard = (props) => {
                     })
                     }
                 </body>
+                })
+                }
             </main>
         </div>
     )
