@@ -1,3 +1,11 @@
-.profileInfo {
-    
+#userCard {
+    min-width: 300px;
+}
+
+h4 {
+    border-bottom: 1px solid black;
+}
+
+#profileImg {
+    max-width: 150px;
 }
