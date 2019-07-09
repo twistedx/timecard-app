@@ -1,0 +1,15 @@
+li {
+    margin-bottom: 5px;
+}
+#btnList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    align-items: center;
+}
+#btnList div {
+    justify-self: start;
+}
+#btnList button {
+    justify-self: end;
+}

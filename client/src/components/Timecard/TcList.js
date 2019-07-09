@@ -6,8 +6,8 @@ const moment = require('moment');
 const TcList = props => {
   const [cardHeight, setCardHeight] = useState();
   
-  const moTime = t  => t === '' ? '' : moment(t).format('LTS');
-  const title = moment(props.date).format('LL');
+  const moTime = t  => t === '' ? '' : moment(t).local().format('LTS');
+  const title = moment(props.date).local().format('LL');
 
 
   console.log(`=====================================
@@ -30,7 +30,7 @@ const TcList = props => {
       <div className="card" style = {{ height: cardHeight, display: 'grid'}}>
         <div className="card-content">
           <span className="card-title activator grey-text text-darken-4" onClick = { () => setCardHeight('300px') } >
-            {title}<i className="material-icons right">more_vert</i>
+            {title}<i className="material-icons right">keyboard_arrow_down</i>
           </span>
           <p>
             {/* optional */}
@@ -41,20 +41,6 @@ const TcList = props => {
           <span className="card-title grey-text text-darken-4" onClick = { () => setCardHeight() }>
             {title}<i className="material-icons right">close</i>
           </span>
-          {/* <p>
-            <div>
-              <span className="title">Job Description: </span>
-              {props.description}
-            </div>
-            <div>
-              <span className="title">Job Role: </span>
-              {props.role}
-            </div>
-            <div>
-              <span className="title">Job Type: </span>
-              {props.type}
-            </div>
-          </p> */}
           <Container>
             <Row>
               <h6>Timecard Number: {props.tcId}</h6>

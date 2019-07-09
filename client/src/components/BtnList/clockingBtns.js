@@ -1,24 +1,68 @@
 import React, { useState, useEffect} from 'react'
-import './BtnCardReveal.css';
+import './ClockingBtns.css';
+import moment from 'moment';
 import { useHttp } from '../Hooks/Fetch';
 
 
 
 const ClockingBtns = (props) => {
+    const date = moment(new Date()).utc().format();
+    const body = {
+      date,
+      clockIn: date
+    }
+
+    console.log(`
+    
+    THIS IS THE DATE NOW INSIDE CLOCKING BTNS:
+    ${moment(date).local().format('LLLL X')}
+    
+    
+    
+    
+    `)
     //set auth=========================================================================
     const token = props.token;
-    let h = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-    }
-    h['x-auth-token'] = token;
+    const jobId = props.jobId;
 
     // let result = useHttp('http://localhost:5000/api/job', 'POST', '', h, []);
 
-    const timeNow = () => {
-        var temp = Date.now();
-        console.log(temp);
+    const newTc = (jid, t) => {
+        let headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+        headers['x-auth-token'] = t;
+        console.log(`
+        
+        this is "h" inside of clockingbtns
+        
+        
+        ${JSON.stringify(headers)}
+        
+        
+        
+        `)
+        //fetch request
+        fetch(`/api/timecard/${jid}`, {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers
+        })
+            .then(r => {
+                console.log(r);
+                return r.json();
+            })
+            .then(r => {
+                console.log(r);
+            })
+            .catch(e => console.error('ERROR: ', e));
+            // window.location.reload();
     }
+
+
+
+
     const [btnValues, setBtnValues] = useState(['Clock In']);
 
     const btnSetter = (state, jid) => {
@@ -26,7 +70,6 @@ const ClockingBtns = (props) => {
         switch (state) {
             case 'Clock In':
                 console.log('this is the jid', jid)
-                clockIn(timeNow, jid)
                 setBtnValues(['Lunch In', 'Break In', 'Clock Out']);
                 break;
             case 'Lunch In':
@@ -53,22 +96,19 @@ const ClockingBtns = (props) => {
     }
 
 
-    const clockIn = async (time, jid) => {
-        const config = {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };
-        try {
-            // const res = await axios.post("/api/job/" + jid, time, config);
-            console.log(Date.now())
 
-        } catch (err) {
-            console.log(err)
-        }
-    };
-    const btnArr = btnValues.map((v, i) =>
-        <li key={i} data-id={props.jobId}> <input type='button' value={v} onClick={() => btnSetter(v, props.jobId)} />  </li>
+    const btnArr = btnValues.map((v, i) => 
+        <li key={i} data-id={jobId}>
+            <div id = 'btnList'>
+                <button className="btn-floating btn-small waves-effect waves-light blue hoverable" value = {v} onClick = {() => {
+                    newTc(jobId, token);
+                    btnSetter(v, jobId);
+                }}>
+                    <i className="material-icons small">add_alarm</i>
+                </button>
+                <div>{v}</div>
+            </div>
+        </li>
     );
 
 

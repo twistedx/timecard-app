@@ -21,80 +21,14 @@ const BtnCardReveal = (props) => {
     }
 
     const token = authContext.token;
-    let h = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-    }
-    h['x-auth-token'] = token;
-
-    // let result = useHttp('http://localhost:5000/api/job', 'POST', '', h, []);
-
-    const timeNow = () => {
-        var temp = Date.now();
-        console.log(temp);
-    }
-
-    const initialState = []
 
     const [cardHeight, setCardHeight] = useState();
-    const [btnValues, setBtnValues] = useState(['Clock In']);
-
-    const btnSetter = (state, jid) => {
-        // eslint-disable-next-line
-        switch (state) {
-            case 'Clock In':
-                console.log('this is the jid', jid)
-                clockIn(timeNow, jid)
-                setBtnValues(['Lunch In', 'Break In', 'Clock Out']);
-                break;
-            case 'Lunch In':
-                window.localStorage.setItem('btnState', state);
-                setBtnValues(['Lunch Out']);
-                break;
-            case 'Lunch Out':
-                window.localStorage.setItem('btnState', state);
-                setBtnValues(['Break In', 'Clock Out']);
-                break;
-            case 'Break In':
-                window.localStorage.setItem('btnState', state);
-                setBtnValues(['Break Out']);
-                break;
-            case 'Break Out':
-                window.localStorage.setItem('btnState', state);
-                setBtnValues(['Break In', 'Clock Out']);
-                break;
-            case 'Clock Out':
-                window.localStorage.setItem('btnState', state);
-                setBtnValues(['Clock In']);
-                break;
-        }
-    }
-
-
-    const clockIn = async (time, jid) => {
-        const config = {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };
-        try {
-            // const res = await axios.post("/api/job/" + jid, time, config);
-            console.log(Date.now())
-
-        } catch (err) {
-            console.log(err)
-        }
-    };
-    const btnArr = btnValues.map((v, i) =>
-        <li key={i} data-id={props.jobId}> <input type='button' value={v} onClick={() => btnSetter(v, props.jobId)} />  </li>
-    );
-
 
     return (
         <div className='container'>
             <div className="card" data-id={props.jobId} style={{ height: cardHeight }}>
                 <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4" onClick={() => setCardHeight('300px')} > {props.title} <i className="material-icons right" >more_vert</i></span>
+                    <span className="card-title activator grey-text text-darken-4" onClick={() => setCardHeight('300px')} > {props.title} <i className="material-icons right" >keyboard_arrow_down</i></span>
                 </div>
                 <div className="card-reveal">
                     <span className="card-title grey-text text-darken-4" onClick={() => setCardHeight()} > {props.title} <i className="material-icons right">close</i></span>
@@ -111,12 +45,16 @@ const BtnCardReveal = (props) => {
                         {props.type}
                     </div>
                     <ul>
-                        <li> <input type = 'button' value = 'All Timecards' onClick = {() => window.location = "/timecards/"+props.jobId} /> </li>
-                        <ClockingBtns token = {token} />
+                        <li> 
+                            <div id = 'btnList'>
+                                <button className="btn-floating btn-small waves-effect waves-light blue hoverable" value = 'All Timecards' onClick = {() => window.location = "/timecards/"+props.jobId}>
+                                    <i className="material-icons small">library_books</i>
+                                </button>
+                                <div>All Timecards</div>
+                            </div>
+                        </li>
+                        <ClockingBtns jobId = { props.jobId } token = { token } />
                     </ul>
-                    <div>
-                        you've clocked in at blah o clock
-                    </div>
                 </div>
             </div>
         </div>
