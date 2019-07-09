@@ -1,0 +1,7 @@
+#editJob,
+#deleteJob {
+  min-width: 100px;
+  margin: 15px;
+  padding: none !important;
+  display: inline-block;
+}

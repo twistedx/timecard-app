@@ -13,20 +13,6 @@ const Dashboard = (props) => {
 
     const authContext = useContext(AuthContext);
 
-    useEffect(() => {
-        authContext.loadUser();
-        authContext.setAppName("Dashboard");
-        // eslint-disable-next-line
-    }, [])
-
-
-    if (localStorage.token) {
-        setAuthToken(localStorage.token);
-    } else {
-        props.history.push('/login');
-    }
-
-
     console.log(`
     this is the token:
     ${authContext.token}
@@ -70,7 +56,7 @@ const Dashboard = (props) => {
 
 
     //fetch Job Profile ==============================================================================================
-    let fetchedJobs = useHttp('http://localhost:5000/api/job', 'GET', '', h, []);
+    let fetchedJobs = useHttp('/api/job', 'GET', '', h, []);
     const jobloading = fetchedJobs[0];
     const j = fetchedJobs[1];
 
@@ -90,10 +76,8 @@ const Dashboard = (props) => {
 
     return (
         <div>
-
             <Navbar title="Dashboard" dropdown = { true } home = { false } />
             <JobModal token = {token}/>
-
             <main>
                 <UserDashboardCard
                     name={profile === loading ? profile : profile.name}
