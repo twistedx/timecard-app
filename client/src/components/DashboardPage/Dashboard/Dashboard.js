@@ -48,7 +48,7 @@ const Dashboard = (props) => {
     h['x-auth-token'] = token;
 
     //fetch user profile =============================================================================================
-    let fetchedProfile = useHttp('http://localhost:5000/api/user', 'GET', '', h, []);
+    let fetchedProfile = useHttp('/api/user', 'GET', '', h, []);
     const p = fetchedProfile[1];
 
     useEffect(() => profileLoadingChecker(p[0]), [p[0]]);
