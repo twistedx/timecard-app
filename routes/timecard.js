@@ -86,12 +86,12 @@ router.put('/:tcid', auth, async (req, res) => {
     //build a Timecard object
 
     const TimecardFields = {};
-    if (clockIn) TimecardFields.clockIn = clockIn;
-    if (clockOut) TimecardFields.clockOut = clockOut;
-    if (lunchIn) TimecardFields.lunchIn = lunchIn;
-    if (lunchOut) TimecardFields.lunchOut = lunchOut;
-    if (breakIn) TimecardFields.breakIn = breakIn;
-    if (breakOut) TimecardFields.breakOut = breakOut;
+    if (clockIn) {TimecardFields.clockIn = clockIn;}
+    if (clockOut) {TimecardFields.clockOut = clockOut;}
+    if (lunchIn) {TimecardFields.lunchIn = lunchIn;}
+    if (lunchOut) {TimecardFields.lunchOut = lunchOut;}
+    if (breakIn) {TimecardFields.breakIn = breakIn;}
+    if (breakOut) {TimecardFields.breakOut = breakOut;}
 
     try {
         let tc = await Timecard.findById({ _id: tcid });
@@ -100,7 +100,7 @@ router.put('/:tcid', auth, async (req, res) => {
 
         if (!tc) return res.status(404).json({ msg: 'Timecard not found' });
 
-        let newtc = await Timecard.findOneAndUpdate({ job: jid, _id: tcid }, TimecardFields, { new: true });
+        let newtc = await Timecard.findOneAndUpdate({ _id: tcid }, TimecardFields, { new: true });
         res.json(newtc);
     } catch (err) {
         console.error(err.message);

@@ -8,11 +8,11 @@ const TimecardSchema = mongoose.Schema({
     },
     date: {
         type: String,
-        default: moment().utc().format('LL')
+        require: true
     },
     clockIn: {
         type: String,
-        default: moment().utc().format()
+        require: true
     },
     clockOut: {
         type: String

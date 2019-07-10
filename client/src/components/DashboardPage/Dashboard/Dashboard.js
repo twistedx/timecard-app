@@ -11,7 +11,6 @@ import Navbar from '../../Layout/Navbar/Navbar';
 
 
 const Dashboard = (props) => {
-
     const authContext = useContext(AuthContext);
 
     useEffect(() => {
