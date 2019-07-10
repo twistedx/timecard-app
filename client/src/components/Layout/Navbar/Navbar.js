@@ -6,40 +6,35 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import DropDownMenu from '../../Layout/DropdownMenu/DropdownMenu.js';
 import './Navbar.css';
 import HomeBtn from '../HomeBtn/HomeBtn';
+import setAuthToken from '../../../utils/setAuthToken'
 
 
 const Navbar = (props) => {
     const authContext = useContext(AuthContext);
-    const { isAuthenticated, logout, user } = authContext;
+    const { isAuthenticated } = authContext;
 
     useEffect(() => {
         M.AutoInit();
         //eslint-disable-next-line
     }, []);
 
-    const onLogout = () => {
-        logout();
-    };
-
     return (
-
         <Fragment>
-
             <style>
                 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap');
             </style>
+            <header>
+                <nav className="nav-wrapper Nav">
 
-            <nav className="nav-wrapper Nav">
-
-                <div>
-                    <a href="#!" className="brand-logo center" id="navTitle"> {isAuthenticated ? props.title : props.appName} </a>
-                </div>
-                <div>
-                    <DropDownMenu visible = { props.dropdown ? true : false }/>
-                    <HomeBtn visible = { props.home ? true : false } />
-
-                </div>
-            </nav>
+                    <div>
+                        <a href="#!" className="brand-logo center" id="navTitle"> {isAuthenticated ? props.title : props.appName} </a>
+                    </div>
+                    <div>
+                        <DropDownMenu visible={props.dropdown ? true : false} />
+                        <HomeBtn visible={props.home ? true : false} />
+                    </div>
+                </nav>
+            </header>
         </Fragment>
 
     )

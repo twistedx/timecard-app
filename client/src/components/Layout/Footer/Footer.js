@@ -11,22 +11,22 @@ const Footer = () => {
 
     return (
 
-        <div>
-            <footer className="page-footer" id="quoteFooter">
-                <div className="container">
-                    <div className="row">
-                        <div className="col l12 m12 s12 center">
-                            <h6>{selectRandom()}</h6>
-                        </div>
+
+        <footer className="page-footer" id="quoteFooter">
+            <div className="container">
+                <div className="row">
+                    <div className="col l12 m12 s12 center">
+                        <h6>{selectRandom()}</h6>
                     </div>
                 </div>
-                <div className="footer-copyright" id="copyrightFooter">
-                    <div className="container center">
-                        © 2019 Copyright
+            </div>
+            <div className="footer-copyright" id="copyrightFooter">
+                <div className="container center">
+                    © 2019 Copyright
                     </div>
-                </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
+
     )
 }
 

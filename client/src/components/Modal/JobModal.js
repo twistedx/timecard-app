@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import './JobModal.css';
-import SelectMenu from './SelectMenu/SelectMenu'
 import { useHttp } from '../Hooks/Fetch';
 
 const JobModal = props => {
@@ -27,20 +26,19 @@ const JobModal = props => {
   const [newJob, setNewJob] = useState({
     name: '',
     role: '',
-    jobType: 'jobType',
+    jobType: '',
     description: ''
   });
-
 
   const { name, role, jobType, description } = newJob;
 
   const onChange = e => setNewJob({ ...newJob, [e.target.name]: e.target.value });
 
-
-
-
   const onSubmit = e => {
     e.preventDefault();
+    if (newJob.jobType === '') {
+      alert('Please Select a Job type')
+    }
     console.log(newJob);
     setSubmitted(true);
   };
@@ -53,7 +51,7 @@ const JobModal = props => {
 
 
 
-  let fetchedJobs = useHttp('http://localhost:5000/api/job', 'POST', JSON.stringify(newJob), h, [submitted]);
+  let fetchedJobs = useHttp('/api/job', 'POST', JSON.stringify(newJob), h, [submitted]);
   const j = fetchedJobs[1];
 
   if (submitted) {
@@ -67,15 +65,10 @@ const JobModal = props => {
     window.location.reload();
   }
 
-
-
-
-
-
   return (
     <Fragment>
-      <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light blue hoverable">
-      <div className = 'valign-wrapper center'  style = {{ height: '37px', width: '45px'}}><i className="material-icons" >add</i></div>
+      <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light transparent hoverable">
+        <div className='valign-wrapper center' style={{ height: '37px', width: '45px' }}><i className="material-icons" >add</i></div>
 
       </button>
 
@@ -83,9 +76,6 @@ const JobModal = props => {
         <button id='close' onClick={() => ajCheck()} className="btn-floating btn-small waves-effect waves-light">
           <i className="material-icons center valign-wrapper">close</i>
         </button>
-
-
-
 
         <div className="container">
           <div id='title'> Add a New Job </div>
@@ -96,7 +86,14 @@ const JobModal = props => {
             <div className="form-group">
               <input id="role" type="text" name='role' placeholder="role" required value={role} onChange={onChange} />
             </div>
-            <SelectMenu />
+            <div className="form-group">
+              <select className="browser-default" name='jobType' value={jobType} onChange={onChange} required>
+                <option >Choose one</option>
+                <option value="hourly" >Hourly Rate</option>
+                <option value="salary">Salary/Day Rate</option>
+                <option value="fixed">Fixed Project Rate</option>
+              </select>
+            </div>
             <div className="form-group">
               <input id="description" type="text" name='description' placeholder="description" required value={description} onChange={onChange} />
             </div>

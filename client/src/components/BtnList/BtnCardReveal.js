@@ -5,7 +5,7 @@ import AuthContext from '../../context/auth/AuthContext';
 import setAuthToken from '../../utils/setAuthToken';
 import ClockingBtns from './ClockingBtns';
 import axios from 'axios';
-
+import EditBtn from './EditBtn';
 
 
 const BtnCardReveal = (props) => {
@@ -63,8 +63,10 @@ const BtnCardReveal = (props) => {
                     }  else {
                         return ['Clock In'];
                 }
+
             }
         }
+
         const cstate = openTcChecker();
        console.log(`this is the cstate!!!!!!!!: ${cstate}`)
 
@@ -89,6 +91,7 @@ const BtnCardReveal = (props) => {
                         {props.type}
                     </div>
                     <ul>
+
                         <li> 
                             <div id = 'btnList'>
                                 <button className="btn-floating btn-small waves-effect waves-light blue hoverable" value = 'All Timecards' onClick = {() => window.location = "/timecards/"+props.jobId}>
@@ -103,8 +106,6 @@ const BtnCardReveal = (props) => {
             </div>
         </div>
     );
-
-
 }
 
 export default BtnCardReveal;

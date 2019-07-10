@@ -12,8 +12,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS,
-  SET_NAME
+  CLEAR_ERRORS
 } from "../types";
 
 const AuthState = props => {
@@ -96,11 +95,6 @@ const AuthState = props => {
     }
   };
 
-  const setAppName = appName => {
-    dispatch({ type: SET_NAME, appName: appName });
-    console.log("Set App Name Fired");
-  };
-
   // Logout
   const logout = () => dispatch({ type: LOGOUT });
 
@@ -119,8 +113,7 @@ const AuthState = props => {
         loadUser,
         login,
         logout,
-        clearErrors,
-        setAppName
+        clearErrors
       }}
     >
       {props.children}

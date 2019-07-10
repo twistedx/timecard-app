@@ -6,11 +6,12 @@ const Timecard = require('../models/Timecard');
 const auth = require('../middleware/auth');
 
 //@route        GET api/timecard
-//@description  GET all users timecard
+//@description  GET all users timecard by job
 //@access       PRIVATE 
 
 router.get('/:job', auth, async (req, res) => {
     try {
+        console.log('All time cards associated to this job were pulled');
         const timecard = await Timecard.find({ job: req.params.job }).sort({ date: -1 });
         res.json(timecard);
     } catch (err) {
@@ -21,7 +22,7 @@ router.get('/:job', auth, async (req, res) => {
 
 
 
-//@route        GET api/timecard/jid/tcid
+//@route        GET api/timecard/tcid
 //@description  GET one timecard from a job
 //@access       PRIVATE 
 
@@ -121,7 +122,7 @@ router.delete('/:id', auth, async (req, res) => {
         await Timecard.findByIdAndRemove(req.params.id);
 
         res.json({ msg: 'Timecard Removed' });
-
+        console.error("Timecard Removed");
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')
