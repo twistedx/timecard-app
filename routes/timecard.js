@@ -33,6 +33,7 @@ router.get('/:tcid', auth, async (req, res) => {
 
     try {
         const timecard = await Timecard.find({ _id: req.params.tcid });
+        console.log('this is the timecard return', JSON.stringify(timecard));
         res.json(timecard);
     } catch (err) {
         console.error(err.message);

@@ -92,6 +92,7 @@ const TimecardPage = ({ match }) => {
             return <TcList
               key={i}
               tcId={v._id}
+              jid={jid}
               date={v.date}
               clockIn={v.clockIn}
               clockOut={v.clockOut || ''}
@@ -102,8 +103,6 @@ const TimecardPage = ({ match }) => {
             />
           })
           }
-
-          {/* <TcList jobId = {match.params.id}/> */}
         </body>
       </main>
     </div>

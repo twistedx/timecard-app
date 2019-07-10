@@ -3,8 +3,7 @@ import './BtnCardReveal.css';
 import { useHttp } from '../Hooks/Fetch';
 import AuthContext from '../../context/auth/AuthContext';
 import setAuthToken from '../../utils/setAuthToken';
-import ClockingBtns from './ClockingBtns';
-import axios from 'axios';
+import ClockingBtns from './clockingBtns';
 import EditBtn from './EditBtn';
 
 
@@ -51,9 +50,9 @@ const BtnCardReveal = (props) => {
                         return ['Lunch Out'];
                     } else if(tcObj.breakIn && !tcObj.breakOut){
                         return ['Break Out'];
-                    } else if (tcObj.lunchIn && tcObj.lunchOut){
+                    } else if (tcObj.lunchIn && tcObj.lunchOut && !tcObj.breakOut){
                         return ['Break In', 'Clock Out'];
-                    } else if (tcObj.breakIn && tcObj.breakOut){
+                    } else if (tcObj.breakIn && tcObj.breakOut && !tcObj.lunchOut){
                         return ['Lunch In', 'Clock Out'];
                     } else if (tcObj.breakOut && tcObj.lunchOut){
                         return ['Clock Out'];
@@ -102,6 +101,7 @@ const BtnCardReveal = (props) => {
                         </li>
                         <ClockingBtns state = { cstate } tc = { latestTc } jobId = { jobId } token = { token } />
                     </ul>
+                    <EditBtn url = "/editjob/" id = {jobId} title = 'Edit Job' key = {jobId} />
                 </div>
             </div>
         </div>

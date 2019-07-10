@@ -19,10 +19,6 @@ const ClockingBtns = (props) => {
     }
     headers['x-auth-token'] = token;
 
-    // let fetchedTc = useHttp('/api/timecard/'+jobId, 'GET', '', headers, []);
-    // const latestTc = fetchedTc[1];
-    // console.log('this is the latest TC' , latestTc[0])
-
     console.log(`
     
     THIS IS THE DATE NOW INSIDE CLOCKING BTNS:
@@ -74,8 +70,6 @@ const ClockingBtns = (props) => {
             body: JSON.stringify(body),
             headers
         })
-            // console.log(` this is the r with the r.json(): 
-            //     ${JSON.stringify(r)}`);
                 const r1 = await r.json();
                 const res = await r1;
                 console.log('THIS IS RES!!!!!!',res)
@@ -101,8 +95,9 @@ const ClockingBtns = (props) => {
                     date: d(),
                     clockIn: d()
                   }
-                newTc(jobId, 'POST', newTcBody);               
-                setBtnValues(['Lunch In', 'Break In', 'Clock Out']);
+                newTc(jobId, 'POST', newTcBody);
+                window.location.reload();
+                // setBtnValues(['Lunch In', 'Break In', 'Clock Out']);
                 break;
             case 'Lunch In':
                 newTcBody = {
@@ -111,8 +106,8 @@ const ClockingBtns = (props) => {
                   console.log(`++++++++++++ this is the body of the put lunchIn request +++++++++++++++++
                   `,newTcBody,tcid)
                 newTc(tcid, 'PUT', newTcBody); 
-            
-                setBtnValues(['Lunch Out']);
+                window.location.reload();
+                // setBtnValues(['Lunch Out']);
                 break;
             case 'Lunch Out':
                 newTcBody = {
@@ -121,8 +116,8 @@ const ClockingBtns = (props) => {
                     console.log(`++++++++++++ this is the body of the put lunchOut request +++++++++++++++++
                     `,newTcBody,tcid)
                 newTc(tcid, 'PUT', newTcBody); 
-                
-                setBtnValues(['Break In', 'Clock Out']);
+                window.location.reload();
+                // setBtnValues(['Break In', 'Clock Out']);
                 break;
             case 'Break In':
                 newTcBody = {
@@ -131,8 +126,8 @@ const ClockingBtns = (props) => {
                     console.log(`++++++++++++ this is the body of the put breakIn request +++++++++++++++++
                     `,newTcBody,tcid)
                 newTc(tcid, 'PUT', newTcBody); 
-                
-                setBtnValues(['Break Out']);
+                window.location.reload();
+                // setBtnValues(['Break Out']);
                 break;
             case 'Break Out':
                 newTcBody = {
@@ -141,8 +136,8 @@ const ClockingBtns = (props) => {
                     console.log(`++++++++++++ this is the body of the put breakOut request +++++++++++++++++
                     `,newTcBody,tcid)
                 newTc(tcid, 'PUT', newTcBody); 
-                
-                setBtnValues(['Break In', 'Clock Out']);
+                window.location.reload();
+                // setBtnValues(['Break In', 'Clock Out']);
                 break;
             case 'Clock Out':
                 newTcBody = {
@@ -151,8 +146,8 @@ const ClockingBtns = (props) => {
                     console.log(`++++++++++++ this is the body of the put clockOut request +++++++++++++++++
                     `,newTcBody,tcid)
                 newTc(tcid, 'PUT', newTcBody); 
-                
-                setBtnValues(['Clock In']);
+                window.location.reload();
+                // setBtnValues(['Clock In']);
                 break;
         }
     }
