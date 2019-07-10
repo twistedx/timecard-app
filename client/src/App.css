@@ -3,3 +3,22 @@
   position: fixed;
   width: 100%;
 }
+
+#editJob,
+#deleteJob {
+  min-width: 100px;
+  margin: 15px;
+  padding: none !important;
+  display: inline-block;
+}
+#EditJobBtn button {
+  width: 100px;
+  margin: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  #modal {
+    width: 100%;
+    left: 0;
+  }
+}

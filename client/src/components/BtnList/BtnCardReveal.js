@@ -3,6 +3,7 @@ import './BtnCardReveal.css';
 import { useHttp } from '../Hooks/Fetch';
 import AuthContext from '../../context/auth/AuthContext';
 import setAuthToken from '../../utils/setAuthToken';
+import EditBtn from './EditBtn';
 
 const BtnCardReveal = (props) => {
     //set auth=========================================================================
@@ -105,11 +106,14 @@ const BtnCardReveal = (props) => {
                         {props.type}
                     </div>
                     <ul>
-                        <li> <input type = 'button' value = 'All Timecards' onClick = {() => window.location = "/timecards/"+props.jobId} /> </li>
+                        <li> <input type='button' value='All Timecards' onClick={() => window.location = "/timecards/" + props.jobId} /> </li>
                         {btnArr}
                     </ul>
                     <div>
                         you've clocked in at blah o clock
+                    </div>
+                    <div>
+                        <EditBtn jid={props.jobId} />
                     </div>
                 </div>
             </div>

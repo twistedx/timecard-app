@@ -6,6 +6,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import DropDownMenu from '../../Layout/DropdownMenu/DropdownMenu.js';
 import './Navbar.css';
 import HomeBtn from '../HomeBtn/HomeBtn';
+import setAuthToken from '../../../utils/setAuthToken'
 
 
 const Navbar = (props) => {
@@ -17,11 +18,8 @@ const Navbar = (props) => {
         //eslint-disable-next-line
     }, []);
 
-
     return (
-
         <Fragment>
-
             <style>
                 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap');
             </style>
@@ -34,7 +32,6 @@ const Navbar = (props) => {
                     <div>
                         <DropDownMenu visible={props.dropdown ? true : false} />
                         <HomeBtn visible={props.home ? true : false} />
-
                     </div>
                 </nav>
             </header>
