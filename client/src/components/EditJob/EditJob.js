@@ -19,6 +19,13 @@ const EditJob = ({ match }) => {
     } else {
         window.location.href = '/';
     }
+
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+    headers['x-auth-token'] = authContext.token;
+
     const jid = match.params.id;
 
     const [job, setJob] = useState({
@@ -34,18 +41,12 @@ const EditJob = ({ match }) => {
 
     const fetchJob = () => {
         //formmatting form responses into payload obj
-        const headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        }
-        headers['x-auth-token'] = authContext.token;
 
         fetch('/api/job/' + jid, {
             method: 'GET',
             headers
         }).then(r => r.json())
             .then(r => {
-                console.log(r);
                 let res = JSON.stringify(r[0]);
                 setJob({
                     ...job,
@@ -54,10 +55,51 @@ const EditJob = ({ match }) => {
                     jobType: r[0].jobType,
                     description: r[0].description
                 })
+            }).catch(e => console.error('ERROR: ', e));
+    }
+
+    const deleteJob = (jid) => {
+        var tempArr = [];
+        fetch('/api/timecard/' + jid, {
+            method: 'GET',
+            headers
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            data.forEach(function (arrayItem) {
+                var x = arrayItem._id;
+                tempArr.push(x);
+            });
+            for (let i = 0; i < tempArr.length; i++) {
+                deleteTc(tempArr[i]);
+            }
+        })
+        deleteThisJob(jid);
+    }
+
+    const deleteTc = (itemToDelete) => {
+        fetch('/api/timecard/' + itemToDelete, {
+            method: 'DELETE',
+            headers
+        }).then(r => r.json())
+            .then(res => {
+                return res;
+            }).then(data => {
+                console.log(data)
             })
             .catch(e => console.error('ERROR: ', e));
     }
 
+    const deleteThisJob = (jid) => {
+        fetch('/api/job/' + jid, {
+            method: 'DELETE',
+            headers
+        }).then(data => {
+            return data.json();
+        }).then(res => {
+            console.log(res);
+        }).catch(e => console.error('ERROR: ', e));
+    }
 
     const editJob = (obj) => {
         //formmatting form responses into payload obj
@@ -74,7 +116,7 @@ const EditJob = ({ match }) => {
         }).then(r => r.json())
             .then(r => {
                 let res = JSON.stringify(r[0]);
-                console.log(`this is the second then after editProfiile() fetch 
+                console.log(`this is the second then after editJob fetch 
                 ${res}`);
             })
             .catch(e => console.error('ERROR: ', e));
@@ -129,8 +171,8 @@ const EditJob = ({ match }) => {
                                     <input id="description" type="text" name='description' placeholder="description" required value={description} onChange={onChange} />
                                 </div>
                                 <div className="center">
-                                    <button type='submit' value='submit' id="editJob" className="waves-effect waves-light btn">Edit</button>
-                                    <button type='submit' value='submit' id="deleteJob" className="btn red waves-effect waves-light">Delete</button>
+                                    <button type='submit' value='submit' id="editJob" className="waves-effect waves-light btn">Save</button>
+                                    <button onClick={() => { deleteJob(jid) }} id="deleteJob" className="btn red waves-effect waves-light">Delete</button>
                                 </div>
                             </form>
                         </div>

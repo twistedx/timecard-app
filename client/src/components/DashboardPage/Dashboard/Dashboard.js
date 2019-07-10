@@ -7,11 +7,24 @@ import AuthContext from '../../../context/auth/AuthContext';
 import setAuthToken from '../../../utils/setAuthToken';
 import loadingImg from '../../../img/loading.gif';
 import Navbar from '../../Layout/Navbar/Navbar';
-import { inherits } from 'util';
+
+
 
 const Dashboard = (props) => {
 
     const authContext = useContext(AuthContext);
+
+    useEffect(() => {
+        authContext.loadUser();
+        //eslint-disable-next-line
+    }, []);
+
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    } else {
+        props.history.push('/login')
+    }
+
 
     console.log(`
     this is the token:
@@ -53,6 +66,13 @@ const Dashboard = (props) => {
             `);
     }
 
+    const loadingTimeout = () => {
+        if (j.length === 0) {
+            return <h3 className="center">Please Create a Job</h3>;
+        } else {
+            return <img src={loadingImg} style={{ height: '200px', width: '200px', position: 'absolute', top: 'calc(50% - 100px', left: 'calc(50% - 100px' }} />;
+        }
+    }
 
 
     //fetch Job Profile ==============================================================================================
@@ -76,8 +96,8 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <Navbar title="Dashboard" dropdown = { true } home = { false } />
-            <JobModal token = {token}/>
+            <Navbar title="Dashboard" dropdown={true} home={false} />
+            <JobModal token={token} />
             <main>
                 <UserDashboardCard
                     name={profile === loading ? profile : profile.name}
@@ -85,8 +105,8 @@ const Dashboard = (props) => {
                     jobTitle={profile === loading ? profile : profile.title}
                 />
 
-                {jobs === loading ? <img src={loadingImg} style={{ height: '200px', width: '200px', position: 'absolute', top: 'calc(50% - 100px', left: 'calc(50% - 100px' }} /> : jobs.map((v, i) => {
-                    return <BtnCardReveal
+                {jobs === loading ? loadingTimeout() : jobs.map((v, i) => {
+                    return <div><BtnCardReveal
                         key={i}
                         jobId={v._id}
                         title={v.name}
@@ -94,13 +114,13 @@ const Dashboard = (props) => {
                         role={v.role}
                         type={v.jobType}
                     />
-                
+                    </div>
                 })
-            }
+                }
             </main>
         </div>
     )
-    
+
 }
 
 export default Dashboard;

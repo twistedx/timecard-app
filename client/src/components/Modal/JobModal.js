@@ -36,6 +36,9 @@ const JobModal = props => {
 
   const onSubmit = e => {
     e.preventDefault();
+    if (newJob.jobType === '') {
+      alert('Please Select a Job type')
+    }
     console.log(newJob);
     setSubmitted(true);
   };
@@ -48,7 +51,7 @@ const JobModal = props => {
 
 
 
-  let fetchedJobs = useHttp('http://localhost:5000/api/job', 'POST', JSON.stringify(newJob), h, [submitted]);
+  let fetchedJobs = useHttp('/api/job', 'POST', JSON.stringify(newJob), h, [submitted]);
   const j = fetchedJobs[1];
 
   if (submitted) {
@@ -84,9 +87,9 @@ const JobModal = props => {
               <input id="role" type="text" name='role' placeholder="role" required value={role} onChange={onChange} />
             </div>
             <div className="form-group">
-              <select className="browser-default" name='jobType' value={jobType} onChange={onChange}>
-                <option value="job" disabled />
-                <option value="hourly">Hourly Rate</option>
+              <select className="browser-default" name='jobType' value={jobType} onChange={onChange} required>
+                <option >Choose one</option>
+                <option value="hourly" >Hourly Rate</option>
                 <option value="salary">Salary/Day Rate</option>
                 <option value="fixed">Fixed Project Rate</option>
               </select>

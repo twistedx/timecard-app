@@ -37,7 +37,7 @@ router.get('/:jid', auth, async (req, res) => {
     console.log(`this is the job id from req.params.jid:
     ${jid}`);
     try {
-        const jobs = await Job.find( { user: id,  _id: jid });
+        const jobs = await Job.find({ user: id, _id: jid });
         console.log(jobs);
         res.json(jobs);
     } catch (err) {
@@ -107,12 +107,14 @@ router.put('/:id', auth, async (req, res) => {
 
 })
 
-//@route        DELETE api/jobs/:id
+//@route        DELETE api/job/:id
 //@description  Delete job
 //@access       Private
 
 router.delete('/:id', auth, async (req, res) => {
     try {
+        console.log('Delete Job Request Recieved');
+
         let job = await Job.findById(req.params.id);
 
         if (!job) return res.status(404).json({ msg: 'Job not found' });
@@ -122,9 +124,8 @@ router.delete('/:id', auth, async (req, res) => {
             return res.status(401).json({ msg: 'Not Authorized' });
         }
         await Job.findByIdAndRemove(req.params.id);
-
         res.json({ msg: 'Job Removed' });
-
+        console.log('Job Removed');
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error')

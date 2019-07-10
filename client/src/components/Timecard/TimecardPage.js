@@ -58,7 +58,7 @@ const TimecardPage = ({ match }) => {
   const tcloading = fetchedTc[0];
   const t = fetchedTc[1];
 
- 
+
   useEffect(() => tcLoadingChecker(t), [t]);
 
   console.log(`
@@ -75,7 +75,7 @@ const TimecardPage = ({ match }) => {
   `)
 
   const loadingTimeout = () => {
-    if(t.length === 0){
+    if (t.length === 0) {
       return <h3 className="center">Please Enter a Timecard</h3>;
     } else {
       return <img src={loadingImg} style={{ height: '200px', width: '200px', position: 'absolute', top: 'calc(50% - 100px', left: 'calc(50% - 100px' }} />;
