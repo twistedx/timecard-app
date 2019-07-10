@@ -19,9 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
 app.use(cors(
     //{
-//     credentials: true,
-//     origin: ['localhost:5000']
-// }
+    //     credentials: true,
+    //     origin: ['localhost:5000']
+    // }
 ));
 
 //admin public folder
@@ -33,6 +33,15 @@ app.use('/api/job', require('./routes/job'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/timecard', require('./routes/timecard'));
 
+// Serve static assets if were in production
+if (process.env.NODE_ENV === 'production') {
+    //set static folder
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 const PORT = process.env.PORT || 5000;
 
