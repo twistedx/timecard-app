@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 
-app.get('/', (req, res) => res.json({ msg: 'Hello World' }))
+
 app.get('/admin', (req, res) => {
     console.log('admin page start');
     res.sendFile(path.join(__dirname, 'public', 'admin.html'))
