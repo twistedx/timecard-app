@@ -67,7 +67,7 @@ const JobModal = props => {
 
   return (
     <Fragment>
-      <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light blue hoverable">
+      <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light transparent hoverable">
         <div className='valign-wrapper center' style={{ height: '37px', width: '45px' }}><i className="material-icons" >add</i></div>
 
       </button>

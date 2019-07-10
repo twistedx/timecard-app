@@ -87,7 +87,7 @@ const BtnCardReveal = (props) => {
 
     return (
         <div className='container'>
-            <div className="card" data-id={props.jobId} style={{ height: cardHeight }}>
+            <div className="card" data-id={props.jobId} style={{ height: cardHeight, borderRadius: "25px" }}>
                 <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4" onClick={() => setCardHeight('300px')} > {props.title} <i className="material-icons right" >more_vert</i></span>
                 </div>

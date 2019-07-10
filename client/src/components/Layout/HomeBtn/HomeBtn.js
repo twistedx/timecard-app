@@ -33,7 +33,7 @@ const HomeBtn = props => {
         <div>
 
             <div className="left nav-wrapper valign-wrapper" style = {{ marginLeft: '10px', display: props.visible ? 'block' : 'none' }}>
-                <button onClick={() => window.location.href = '/'} className="btn-floating btn-medium waves-effect waves-light blue hoverable">
+                <button onClick={() => window.location.href = '/'} className="btn-floating btn-medium waves-effect waves-light transparent hoverable">
                     <div className = 'valign-wrapper center'  style = {{ height: '35px', width: '40px'}}><i className="material-icons" >home</i></div>
                 </button>
             </div>
