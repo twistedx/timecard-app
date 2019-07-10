@@ -10,7 +10,6 @@ import Navbar from '../../Layout/Navbar/Navbar';
 import { inherits } from 'util';
 
 const Dashboard = (props) => {
-
     const authContext = useContext(AuthContext);
 
     useEffect(() => {

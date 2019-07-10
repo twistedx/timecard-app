@@ -20,13 +20,57 @@ const BtnCardReveal = (props) => {
         setAuthToken(localStorage.token);
     }
 
+    //set global variables ============================================================================
     const token = authContext.token;
+    const jobId = props.jobId;
+    let headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+    headers['x-auth-token'] = token;
 
+
+    //fetch timecards for each job ========================================================================
+    let fetchedTc = useHttp('/api/timecard/'+jobId, 'GET', '', headers, []);
+    const latestTcArr = fetchedTc[1];
+    const latestTc = latestTcArr[0];
+    useEffect( () => { setTcObj(latestTc) }, [latestTc] )
+    
+    
+
+    //hooks ==================================================================================================
     const [cardHeight, setCardHeight] = useState();
+    const [tcObj, setTcObj] = useState({msg: 'fetch has not finished yet'});
+
+
+        //functions ==============================================================================================
+        const openTcChecker = () => {
+            if(tcObj){
+                if(tcObj.clockIn && !tcObj.clockOut){
+                    if(tcObj.lunchIn && !tcObj.lunchOut){
+                        return ['Lunch Out'];
+                    } else if(tcObj.breakIn && !tcObj.breakOut){
+                        return ['Break Out'];
+                    } else if (tcObj.lunchIn && tcObj.lunchOut){
+                        return ['Break In', 'Clock Out'];
+                    } else if (tcObj.breakIn && tcObj.breakOut){
+                        return ['Lunch In', 'Clock Out'];
+                    } else if (tcObj.breakOut && tcObj.lunchOut){
+                        return ['Clock Out'];
+                    } else {
+                        return ['Lunch In', 'Break In', 'Clock Out'];
+                    }
+                    }  else {
+                        return ['Clock In'];
+                }
+            }
+        }
+        const cstate = openTcChecker();
+       console.log(`this is the cstate!!!!!!!!: ${cstate}`)
 
     return (
         <div className='container'>
-            <div className="card" data-id={props.jobId} style={{ height: cardHeight }}>
+            <div className="card" data-id={jobId} style={{ height: cardHeight }}>
                 <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4" onClick={() => setCardHeight('300px')} > {props.title} <i className="material-icons right" >keyboard_arrow_down</i></span>
                 </div>
@@ -53,7 +97,7 @@ const BtnCardReveal = (props) => {
                                 <div>All Timecards</div>
                             </div>
                         </li>
-                        <ClockingBtns jobId = { props.jobId } token = { token } />
+                        <ClockingBtns state = { cstate } tc = { latestTc } jobId = { jobId } token = { token } />
                     </ul>
                 </div>
             </div>
