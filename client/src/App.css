@@ -10,10 +10,33 @@
   margin: 15px;
   padding: none !important;
   display: inline-block;
+  background:rgb(73, 71, 222);
+  border-radius: 25px;
 }
 #EditJobBtn button {
   width: 100px;
   margin: 15px;
+}
+
+#editJobCardReveal {
+  background:rgb(73, 71, 222);
+  border-radius: 25px;
+}
+
+#editJobCardReveal:hover {
+  background: rgb(202, 215, 255);
+}
+
+#editJob:hover {
+  background: rgb(202, 215, 255);
+}
+
+#deleteJob {
+  background: red;
+}
+
+#deleteJob:hover {
+  background: rgb(255, 171, 171);
 }
 
 @media only screen and (max-width: 600px) {

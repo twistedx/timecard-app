@@ -145,11 +145,11 @@ const EditJob = ({ match }) => {
 
     return (
         <Fragment>
-            <Navbar title="Edit Job" dropdown={false} home={true} />
+            <Navbar title="Edit Job" dropdown={true} home={true} />
             <main>
                 <h5 className="center">Job #{jid}</h5>
                 <div className="container">
-                    <div className="card">
+                    <div className="card" style={{ borderRadius: "25px" }}>
                         <div className="card-content">
                             <div id='title'> Add a New Job </div>
                             <form onSubmit={onSubmit}>
@@ -172,7 +172,7 @@ const EditJob = ({ match }) => {
                                 </div>
                                 <div className="center">
                                     <button type='submit' value='submit' id="editJob" className="waves-effect waves-light btn">Save</button>
-                                    <button onClick={() => { deleteJob(jid) }} id="deleteJob" className="btn red waves-effect waves-light">Delete</button>
+                                    <button onClick={() => { deleteJob(jid) }} id="deleteJob" className="btn waves-effect waves-light">Delete</button>
                                 </div>
                             </form>
                         </div>
