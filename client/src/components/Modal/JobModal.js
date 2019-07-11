@@ -65,12 +65,15 @@ const JobModal = props => {
     window.location.reload();
   }
 
+
+  
   return (
     <Fragment>
-      <button id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-large waves-effect waves-light transparent hoverable addJobModalButton">
-        <div className='valign-wrapper center ' style={{ height: '37px', width: '45px' }}><i className="material-icons" >add</i></div>
-
-      </button>
+      <div className="left nav-wrapper valign-wrapper" style={{ display: props.visible ? 'block' : 'none' }}>
+        <button  id='addJobBtn' onClick={() => ajCheck()} className="btn-floating btn-medium waves-effect waves-light transparent hoverable">
+          <div className = 'valign-wrapper center'  style = {{ height: '35px', width: '40px'}}><i className="material-icons" >add</i></div>
+        </button>
+      </div>
 
       <div id='modal' className='center valign-wrapper'>
         <button id='close' onClick={() => ajCheck()} className="btn-floating btn-small waves-effect waves-light">
@@ -78,7 +81,7 @@ const JobModal = props => {
         </button>
 
         <div className="container">
-          <div id='title'> Add a New Job </div>
+          <h6 id='title'> Add a New Job </h6>
           <form onSubmit={onSubmit}>
             <div className="form-group">
               <input id="company" type="text" name='name' placeholder="job name" required value={name} onChange={onChange} />
