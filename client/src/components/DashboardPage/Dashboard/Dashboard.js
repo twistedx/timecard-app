@@ -95,9 +95,9 @@ const Dashboard = (props) => {
 
     return (
         <Fragment>
-            <Navbar title="Dashboard" dropdown={true} home={false} />
+            <Navbar title="Dashboard" dropdown={true} home={false} addJob = {true} token={token} />
             <main>
-                <JobModal token={token} />
+                
 
                 <UserDashboardCard
                     name={profile === loading ? profile : profile.name}

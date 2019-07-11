@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../../context/auth/AuthContext';
 import PropTypes from 'prop-types';
@@ -6,6 +6,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import DropDownMenu from '../../Layout/DropdownMenu/DropdownMenu.js';
 import './Navbar.css';
 import HomeBtn from '../HomeBtn/HomeBtn';
+import JobModal from '../../Modal/JobModal'
 import setAuthToken from '../../../utils/setAuthToken'
 
 
@@ -33,6 +34,7 @@ const Navbar = (props) => {
                     <div>
                         <DropDownMenu visible={props.dropdown ? true : false} />
                         <HomeBtn visible={props.home ? true : false} />
+                        <JobModal visible={props.addJob ? true : false} token={props.token} />
                     </div>
                 </nav>
             </header>

@@ -1,9 +1,5 @@
 #addJobBtn {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 45px;
-  height: 45px;
+  margin-left: 10px;
 }
 #modal {
   position: absolute;
@@ -34,4 +30,11 @@ form button {
 
 #newJobSubmit {
   background: rgb(73, 71, 222);
+}
+#title{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-style: normal;
+  /* font-size: 18px; */
+  font-weight: 600;
+  color: rgb(78, 78, 78);
 }
