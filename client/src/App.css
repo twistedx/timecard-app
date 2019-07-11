@@ -1,7 +1,15 @@
-#quoteFooter {
+/* #quoteFooter {
   bottom: 0;
   position: fixed;
   width: 100%;
+} */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
 }
 
 #editJob,
@@ -67,5 +75,11 @@
   }
   .page-footer {
     padding: 0;
+  }
+  .addJobModalButton {
+    height: 70%;
+  }
+  .heightSize {
+    height: 80%;
   }
 }
