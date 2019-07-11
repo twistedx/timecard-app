@@ -20,14 +20,15 @@ const Navbar = (props) => {
 
     return (
         <Fragment>
-            <style>
-                @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap');
-            </style>
+
             <header>
+                <style>
+                    @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap');
+            </style>
                 <nav className="nav-wrapper Nav">
 
                     <div>
-                        <a href="#!" className="brand-logo center" id="navTitle"> {isAuthenticated ? props.title : props.appName} </a>
+                        <a href="#!" className="brand-logo center flow-text" id="navTitle"> {isAuthenticated ? props.title : props.appName} </a>
                     </div>
                     <div>
                         <DropDownMenu visible={props.dropdown ? true : false} />

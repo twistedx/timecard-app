@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, Fragment } from 'react'
 import UserDashboardCard from '../UserDashboardCard/UserDashboardCard.js';
 import BtnCardReveal from '../../BtnList/BtnCardReveal';
 import JobModal from '../../Modal/JobModal'
@@ -94,10 +94,11 @@ const Dashboard = (props) => {
 
 
     return (
-        <div>
+        <Fragment>
             <Navbar title="Dashboard" dropdown={true} home={false} />
-            <JobModal token={token} />
             <main>
+                <JobModal token={token} />
+
                 <UserDashboardCard
                     name={profile === loading ? profile : profile.name}
                     email={profile === loading ? profile : profile.email}
@@ -105,7 +106,7 @@ const Dashboard = (props) => {
                 />
 
                 {jobs === loading ? loadingTimeout() : jobs.map((v, i) => {
-                    return <div><BtnCardReveal
+                    return <div className="heightSize"><BtnCardReveal
                         key={i}
                         jobId={v._id}
                         title={v.name}
@@ -117,7 +118,7 @@ const Dashboard = (props) => {
                 })
                 }
             </main>
-        </div>
+        </Fragment>
     )
 
 }
