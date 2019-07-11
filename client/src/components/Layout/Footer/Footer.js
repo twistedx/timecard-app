@@ -20,7 +20,7 @@ const Footer = () => {
                         <strong><Clock format="HH:mm:ss" ticking={true} interval={1000} /></strong>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row smallScreen">
                     <div className="col l12 m12 s12 center">
                         <h6>{selectRandom()}</h6>
                     </div>
