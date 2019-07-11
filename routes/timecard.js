@@ -26,13 +26,14 @@ router.get('/:job', auth, async (req, res) => {
 //@description  GET one timecard from a job
 //@access       PRIVATE 
 
-router.get('/:tcid', auth, async (req, res) => {
+router.get('/tc/:tcid', auth, async (req, res) => {
     console.log(`
     this is the Job Id: ${req.params.jid}
     this is the Timecard Id: ${req.params.tcid}`);
 
     try {
         const timecard = await Timecard.find({ _id: req.params.tcid });
+        console.log('this is the timecard return', JSON.stringify(timecard));
         res.json(timecard);
     } catch (err) {
         console.error(err.message);

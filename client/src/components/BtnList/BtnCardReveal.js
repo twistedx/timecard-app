@@ -4,7 +4,6 @@ import { useHttp } from '../Hooks/Fetch';
 import AuthContext from '../../context/auth/AuthContext';
 import setAuthToken from '../../utils/setAuthToken';
 import ClockingBtns from './clockingBtns';
-import axios from 'axios';
 import EditBtn from './EditBtn';
 
 
@@ -40,7 +39,29 @@ const BtnCardReveal = (props) => {
 
     //hooks ==================================================================================================
     const [cardHeight, setCardHeight] = useState();
-    const [tcObj, setTcObj] = useState({ msg: 'fetch has not finished yet' });
+    const [tcObj, setTcObj] = useState({msg: 'fetch has not finished yet'});
+
+
+        //functions ==============================================================================================
+        const openTcChecker = () => {
+            if(tcObj){
+                if(tcObj.clockIn && !tcObj.clockOut){
+                    if(tcObj.lunchIn && !tcObj.lunchOut){
+                        return ['Lunch Out'];
+                    } else if(tcObj.breakIn && !tcObj.breakOut){
+                        return ['Break Out'];
+                    } else if (tcObj.lunchIn && tcObj.lunchOut && !tcObj.breakOut){
+                        return ['Break In', 'Clock Out'];
+                    } else if (tcObj.breakIn && tcObj.breakOut && !tcObj.lunchOut){
+                        return ['Lunch In', 'Clock Out'];
+                    } else if (tcObj.breakOut && tcObj.lunchOut){
+                        return ['Clock Out'];
+                    } else {
+                        return ['Lunch In', 'Break In', 'Clock Out'];
+                    }
+                    }  else {
+                        return ['Clock In'];
+                }
 
 
     //functions ==============================================================================================
@@ -102,7 +123,7 @@ const BtnCardReveal = (props) => {
                         </li>
                         <ClockingBtns state={cstate} tc={latestTc} jobId={jobId} token={token} />
                     </ul>
-                    <EditBtn jid={jobId} key={jobId} />
+                    <EditBtn url = "/editjob/" id = {jobId} title = 'Edit Job' key = {jobId} />
                 </div>
             </div>
         </div>
