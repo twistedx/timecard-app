@@ -17,7 +17,18 @@
   width: 100px;
   margin: 15px;
 }
-
+#editTc,
+#deleteTc {
+  min-width: 100px;
+  margin: 15px;
+  padding: none !important;
+  display: inline-block;
+  background: rgb(73, 71, 222);
+  border-radius: 25px;
+}
+#deleteTc {
+  background-color: red;
+}
 #editJobCardReveal {
   background: rgb(73, 71, 222);
   border-radius: 25px;
