@@ -58,4 +58,14 @@
     width: 100%;
     left: 0;
   }
+  .smallScreen {
+    display: none;
+  }
+  .mb {
+    margin-bottom: auto;
+    padding: 10px;
+  }
+  .page-footer {
+    padding: 0;
+  }
 }
