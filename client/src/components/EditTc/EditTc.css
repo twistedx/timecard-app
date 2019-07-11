@@ -1,0 +1,14 @@
+.form {
+    display: grid;
+    grid-template-columns: 1fr, 5fr 1fr 5fr;
+    justify-items: center;
+}
+.myBtn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+button{
+    width: 80%;
+}

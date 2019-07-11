@@ -3,6 +3,7 @@ import AuthContext from '../../context/auth/AuthContext';
 import setAuthToken from '../../utils/setAuthToken';
 import Navbar from '../Layout/Navbar/Navbar';
 import moment from 'moment';
+import './EditTc.css';
 
 
 
@@ -215,25 +216,31 @@ const EditTc = ({ match }) => {
                     <div className="card" style={{ borderRadius: "25px" }}>
                         <div className="card-content">
                             <form onSubmit={onSubmit}>
-                                <div className="form-group">
-                                    <input id="clockIn" type="text" name='clockIn' placeholder="Clock In" value={clockIn} onChange={onChange} />
+                                <div className="form-group row">
+                                <label className = 'left center-align col s4'>Clock In</label>
+                                    <input className = 'center-align col s8' id="clockIn" type="text" name='clockIn' placeholder="Clock In" value={clockIn} onChange={onChange} />
                                 </div>
-                                <div className="form-group">
-                                    <input id="clockOut" type="text" name='clockOut' placeholder="Clock Out" value={clockOut} onChange={onChange} />
+                                <div className="form-group row">
+                                <label className = 'left center-align col s4'>Clock Out</label>
+                                    <input className = 'center-align col s8'  id="clockOut" type="text" name='clockOut' placeholder="Clock Out" value={clockOut} onChange={onChange} />
                                 </div>
-                                <div className="form-group">
-                                    <input id="lunchIn" type="text" name='lunchIn' placeholder="Lunch In" value={lunchIn} onChange={onChange} />
+                                <div className="form-group row">
+                                <label className = 'left center-align col s4'>Lunch In</label>
+                                    <input className = 'center-align col s8'  id="lunchIn" type="text" name='lunchIn' placeholder="Lunch In" value={lunchIn} onChange={onChange} />
                                 </div>
-                                <div className="form-group">
-                                    <input id="lunchOut" type="text" name='lunchOut' placeholder="Lunch Out" value={lunchOut} onChange={onChange} />
+                                 <div className="form-group row">
+                                    <label className = 'left center-align col s4'>Lunch Out</label>
+                                    <input className = 'center-align col s8'  id="lunchOut" type="text" name='lunchOut' placeholder="Lunch Out" value={lunchOut} onChange={onChange} />
                                 </div>
-                                <div className="form-group">
-                                    <input id="breakIn" type="text" name='breakIn' placeholder="Break In" value={breakIn} onChange={onChange} />
+                                <div className="form-group row">
+                                    <label className = 'left center-align col s4'>Break In</label>
+                                    <input className = 'center-align col s8'  id="breakIn" type="text" name='breakIn' placeholder="Break In" value={breakIn} onChange={onChange} />
                                 </div>
-                                <div className="form-group">
-                                    <input id="breakOut" type="text" name='breakOut' placeholder="Break Out" value={breakOut} onChange={onChange} />
+                                <div className="form-group row">
+                                    <label className = 'left center-align col s4'>Break Out</label>
+                                    <input className = 'center-align col s8'  id="breakOut" type="text" name='breakOut' placeholder="Break Out" value={breakOut} onChange={onChange} />
                                 </div>
-                                <div className="center">
+                                <div className="myBtn">
                                     <button type='submit' value='submit' id="editTc" className="waves-effect waves-light btn">Save</button>
                                     <button onClick={() => { deleteTc(tcid) }} id="deleteTc" className="btn waves-effect waves-light">Delete</button>
                                 </div>
