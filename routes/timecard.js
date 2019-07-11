@@ -26,7 +26,7 @@ router.get('/:job', auth, async (req, res) => {
 //@description  GET one timecard from a job
 //@access       PRIVATE 
 
-router.get('/:tcid', auth, async (req, res) => {
+router.get('/tc/:tcid', auth, async (req, res) => {
     console.log(`
     this is the Job Id: ${req.params.jid}
     this is the Timecard Id: ${req.params.tcid}`);

@@ -38,7 +38,7 @@ const App = () => {
           <Route exact path='/timecards/:id' component={TimecardPage} key={TimecardPage.name} />
           <Route exact path='/edituser' component={EditUser} key={EditUser.name} />
           <Route exact path='/editjob/:id' component={EditJob} key={EditJob.name} />
-          <Route exact path='/edittc/:id' component={EditTc} key={EditTc.name} />
+          <Route exact path='/edittc/:id/:jid' component={EditTc} key={EditTc.name} />
         </Switch>
         <Footer />
       </Router>
