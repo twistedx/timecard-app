@@ -62,31 +62,33 @@ const BtnCardReveal = (props) => {
                     }  else {
                         return ['Clock In'];
                 }
-
-
-    //functions ==============================================================================================
-    const openTcChecker = () => {
-        if (tcObj) {
-            if (tcObj.clockIn && !tcObj.clockOut) {
-                if (tcObj.lunchIn && !tcObj.lunchOut) {
-                    return ['Lunch Out'];
-                } else if (tcObj.breakIn && !tcObj.breakOut) {
-                    return ['Break Out'];
-                } else if (tcObj.lunchIn && tcObj.lunchOut) {
-                    return ['Break In', 'Clock Out'];
-                } else if (tcObj.breakIn && tcObj.breakOut) {
-                    return ['Lunch In', 'Clock Out'];
-                } else if (tcObj.breakOut && tcObj.lunchOut) {
-                    return ['Clock Out'];
-                } else {
-                    return ['Lunch In', 'Break In', 'Clock Out'];
-                }
-            } else {
-                return ['Clock In'];
             }
-
         }
-    }
+
+
+    // //functions ==============================================================================================
+    // const openTcChecker = () => {
+    //     if (tcObj) {
+    //         if (tcObj.clockIn && !tcObj.clockOut) {
+    //             if (tcObj.lunchIn && !tcObj.lunchOut) {
+    //                 return ['Lunch Out'];
+    //             } else if (tcObj.breakIn && !tcObj.breakOut) {
+    //                 return ['Break Out'];
+    //             } else if (tcObj.lunchIn && tcObj.lunchOut) {
+    //                 return ['Break In', 'Clock Out'];
+    //             } else if (tcObj.breakIn && tcObj.breakOut) {
+    //                 return ['Lunch In', 'Clock Out'];
+    //             } else if (tcObj.breakOut && tcObj.lunchOut) {
+    //                 return ['Clock Out'];
+    //             } else {
+    //                 return ['Lunch In', 'Break In', 'Clock Out'];
+    //             }
+    //         } else {
+    //             return ['Clock In'];
+    //         }
+
+    //     }
+    // }
 
     const cstate = openTcChecker();
     console.log(`this is the cstate!!!!!!!!: ${cstate}`)
