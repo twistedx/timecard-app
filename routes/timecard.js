@@ -59,6 +59,7 @@ router.post('/:job', auth, async (req, res) => {
 
         const tc = await newTimecard.save();
         res.json(tc);
+        console.log('new job added');
 
     } catch (err) {
         console.error(err.message);
@@ -87,12 +88,12 @@ router.put('/:tcid', auth, async (req, res) => {
     //build a Timecard object
 
     const TimecardFields = {};
-    if (clockIn) {TimecardFields.clockIn = clockIn;}
-    if (clockOut) {TimecardFields.clockOut = clockOut;}
-    if (lunchIn) {TimecardFields.lunchIn = lunchIn;}
-    if (lunchOut) {TimecardFields.lunchOut = lunchOut;}
-    if (breakIn) {TimecardFields.breakIn = breakIn;}
-    if (breakOut) {TimecardFields.breakOut = breakOut;}
+    if (clockIn) { TimecardFields.clockIn = clockIn; }
+    if (clockOut) { TimecardFields.clockOut = clockOut; }
+    if (lunchIn) { TimecardFields.lunchIn = lunchIn; }
+    if (lunchOut) { TimecardFields.lunchOut = lunchOut; }
+    if (breakIn) { TimecardFields.breakIn = breakIn; }
+    if (breakOut) { TimecardFields.breakOut = breakOut; }
 
     try {
         let tc = await Timecard.findById({ _id: tcid });

@@ -30,12 +30,12 @@ const BtnCardReveal = (props) => {
 
 
     //fetch timecards for each job ========================================================================
-    let fetchedTc = useHttp('/api/timecard/'+jobId, 'GET', '', headers, []);
+    let fetchedTc = useHttp('/api/timecard/' + jobId, 'GET', '', headers, []);
     const latestTcArr = fetchedTc[1];
     const latestTc = latestTcArr[0];
-    useEffect( () => { setTcObj(latestTc) }, [latestTc] )
-    
-    
+    useEffect(() => { setTcObj(latestTc) }, [latestTc])
+
+
 
     //hooks ==================================================================================================
     const [cardHeight, setCardHeight] = useState();
@@ -63,11 +63,33 @@ const BtnCardReveal = (props) => {
                         return ['Clock In'];
                 }
 
-            }
-        }
 
-        const cstate = openTcChecker();
-       console.log(`this is the cstate!!!!!!!!: ${cstate}`)
+    //functions ==============================================================================================
+    const openTcChecker = () => {
+        if (tcObj) {
+            if (tcObj.clockIn && !tcObj.clockOut) {
+                if (tcObj.lunchIn && !tcObj.lunchOut) {
+                    return ['Lunch Out'];
+                } else if (tcObj.breakIn && !tcObj.breakOut) {
+                    return ['Break Out'];
+                } else if (tcObj.lunchIn && tcObj.lunchOut) {
+                    return ['Break In', 'Clock Out'];
+                } else if (tcObj.breakIn && tcObj.breakOut) {
+                    return ['Lunch In', 'Clock Out'];
+                } else if (tcObj.breakOut && tcObj.lunchOut) {
+                    return ['Clock Out'];
+                } else {
+                    return ['Lunch In', 'Break In', 'Clock Out'];
+                }
+            } else {
+                return ['Clock In'];
+            }
+
+        }
+    }
+
+    const cstate = openTcChecker();
+    console.log(`this is the cstate!!!!!!!!: ${cstate}`)
 
     return (
         <div className='container'>
@@ -91,15 +113,15 @@ const BtnCardReveal = (props) => {
                     </div>
                     <ul>
 
-                        <li> 
-                            <div id = 'btnList'>
-                                <button className="btn-floating btn-small waves-effect waves-light blue hoverable" value = 'All Timecards' onClick = {() => window.location = "/timecards/"+props.jobId}>
+                        <li>
+                            <div id='btnList'>
+                                <button className="btn-floating btn-small waves-effect waves-light blue hoverable" value='All Timecards' onClick={() => window.location = "/timecards/" + props.jobId}>
                                     <i className="material-icons small">library_books</i>
                                 </button>
                                 <div>All Timecards</div>
                             </div>
                         </li>
-                        <ClockingBtns state = { cstate } tc = { latestTc } jobId = { jobId } token = { token } />
+                        <ClockingBtns state={cstate} tc={latestTc} jobId={jobId} token={token} />
                     </ul>
                     <EditBtn url = "/editjob/" id = {jobId} title = 'Edit Job' key = {jobId} />
                 </div>
